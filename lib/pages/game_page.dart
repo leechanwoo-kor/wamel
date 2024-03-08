@@ -1,15 +1,13 @@
 import 'package:flame/game.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../game/my_game.dart';
-import '../tools/navigator_tool.dart';
 import '../tools/sensor_tool.dart';
 import '../tools/system_tool.dart';
 
 class GamePage extends StatefulWidget {
   final bool hide;
-  GamePage({required this.hide});
+  GamePage({this.hide = false});
   @override
   _GamePageState createState() => _GamePageState();
 }

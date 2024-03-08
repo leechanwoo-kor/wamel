@@ -34,9 +34,11 @@ class GenerateBall {
       level: level,
       moving: false,
       bounce: true,
+      gameRef: gameRef,
     );
-    gameRef.add(ball); // Forge2D의 BodyComponent를 상속받는 Ball 인스턴스를 직접 추가
-    GameState.lastBall = ball;
+    gameRef.add(
+        ball as Component); // Forge2D의 BodyComponent를 상속받는 Ball 인스턴스를 직접 추가
+    GameState.lastBall = ball as Ball;
 
     // Forge2D에서는 업데이트 로직이 다를 수 있으므로, 필요에 따라 Ball 클래스를 수정해야 할 수 있습니다.
   }

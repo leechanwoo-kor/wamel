@@ -15,7 +15,6 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenConfig(
-      key: Key('screen_config_key'),
       builder: () => Scaffold(
         backgroundColor: Colors.grey[100],
         body: SafeArea(
@@ -23,38 +22,38 @@ class AboutPage extends StatelessWidget {
             child: Column(
               children: [
                 _topAction(),
-                lExpanded(flex: 0, child: Container()),
-                lExpanded(flex: 10, child: Container()),
+                lExpanded(),
+                lExpanded(flex: 10),
                 lText(
                   'A',
                   bold: true,
                   size: 18,
-                  color: Colors.grey[600] ?? Colors.black, overflow: TextOverflow.clip,
+                  color: Colors.grey[600],
                 ),
-                lExpanded(flex: 0, child: Container()),
+                lExpanded(),
                 lText(
                   'Work',
                   bold: true,
                   size: 36,
-                    color: Colors.black, overflow: TextOverflow.clip,
+                  color: Colors.black,
                 ),
-                lExpanded(flex: 0, child: Container()),
+                lExpanded(),
                 lText(
                   'by',
                   bold: true,
                   size: 18,
-                  color: Colors.grey[600] ?? Colors.black, overflow: TextOverflow.clip,
+                  color: Colors.grey[600],
                 ),
-                lExpanded(flex: 0, child: Container()),
+                lExpanded(),
                 Image.asset(
                   'assets/images/qr.jpg',
                   width: 30.vw,
                 ),
                 lExpanded(flex: 10, child: _homeSite()),
                 _madeWithLove(),
-                lExpanded(flex: 0, child: Container()),
+                lExpanded(),
                 _bottomAction(),
-                lExpanded(flex: 0, child: Container()),
+                lExpanded(),
               ],
             ),
           ),
@@ -71,7 +70,7 @@ class AboutPage extends StatelessWidget {
       },
       child: lText(
         url,
-        color: Colors.blue, size: 0.0, bold: false, overflow: TextOverflow.clip,
+        color: Colors.blue,
       ),
     );
   }
@@ -86,19 +85,19 @@ class AboutPage extends StatelessWidget {
               color: Colors.black,
               onTap: _back,
             ),
-            lExpanded(flex: 0, child: Container()),
+            lExpanded(),
           ],
         ),
       );
 
   Widget _madeWithLove() => Row(
         children: [
-          lExpanded(flex: 0, child: Container()),
+          lExpanded(),
           lText(
             'Made with ',
             bold: true,
             size: 18,
-            color: Colors.grey[600]!, overflow: TextOverflow.clip,
+            color: Colors.grey[600],
           ),
           Pulse(
             child: Icon(
@@ -107,18 +106,18 @@ class AboutPage extends StatelessWidget {
               color: Colors.red,
             ),
           ),
-          lExpanded(flex: 0, child: Container()),
+          lExpanded(),
         ],
       );
 
   Widget _bottomAction() => Row(
         children: [
-          lExpanded(flex: 0, child: Container()),
+          lExpanded(),
           lText(
             'Powered by',
             bold: true,
             size: 18,
-            color: Colors.grey[600]!, overflow: TextOverflow.clip,
+            color: Colors.grey[600],
           ),
           lWidth(5.vw),
           FlutterLogo(size: 8.vw),
@@ -131,7 +130,7 @@ class AboutPage extends StatelessWidget {
             'assets/images/flame.png',
             width: 8.vw,
           ),
-          lExpanded(flex: 0, child: Container()),
+          lExpanded(),
         ],
       );
 }

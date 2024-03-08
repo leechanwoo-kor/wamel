@@ -31,7 +31,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenConfig(
-      key: Key('screen_config_key'),
       builder: () => Scaffold(
         backgroundColor: Colors.grey[100],
         body: SafeArea(
@@ -40,7 +39,7 @@ class HomePage extends StatelessWidget {
               children: [
                 _topAction(),
                 lExpanded(
-                    child: _bottomAction(), flex: 1,
+                  child: _bottomAction(),
                 ),
                 _hideGame(),
               ],
@@ -51,6 +50,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  ///预加载
   Widget _hideGame() => Offstage(
         child: Container(
           width: 1,
@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
               color: Colors.black,
               onTap: _about,
             ),
-            lExpanded(flex: 1, child: Container()),
+            lExpanded(),
             lIconButton(
               Icons.settings,
               size: 10.vw,
@@ -84,11 +84,11 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           lButton(
-            'Start',
+            'Start game',
             onTap: _start,
             height: 5.vw * 2.2,
             colorBg: Colors.black,
-            colorText: Colors.white, fontSize: 12.0, width: 0.0, radius: 0.0,
+            colorText: Colors.white,
           ),
         ],
       );

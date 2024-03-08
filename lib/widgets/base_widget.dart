@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 TextStyle lTextStyle({
-  required Color color,
-  required double size,
-  required bool bold,
+  Color? color,
+  double? size,
+  bool? bold,
 }) {
   size ??= 14;
   bold ??= false;
@@ -17,10 +17,10 @@ TextStyle lTextStyle({
 
 Widget lText(
   String text, {
-  required Color color,
-  required double size,
-  required bool bold,
-  required TextOverflow overflow,
+  Color? color,
+  double? size,
+  bool? bold,
+  TextOverflow? overflow,
 }) {
   size ??= 14;
   bold ??= false;
@@ -50,20 +50,20 @@ Widget lBlank() {
   return Container();
 }
 
-Widget lExpanded({required int flex, required Widget child}) {
+Widget lExpanded({int? flex, Widget? child}) {
   flex ??= 1;
   child ??= Container();
   return Expanded(flex: flex, child: Center(child: child));
 }
 
 Widget lTextField({
-  required String hintText,
-  required double padding,
-  required Function(String) onChanged,
-  required Function(String) onSubmitted,
-  required TextInputType keyboardType,
+  String? hintText,
+  double? padding,
+  Function(String)? onChanged,
+  Function(String)? onSubmitted,
+  TextInputType? keyboardType,
 }) {
-  hintText ??= '입력해 주세요...';
+  hintText ??= 'Please enter...';
   padding ??= 10;
   onChanged ??= (_) {};
   onSubmitted ??= (_) {};
@@ -84,20 +84,20 @@ Widget lTextField({
 
 Widget lButton(
   String text, {
-  required void Function() onTap,
-  required double height,
-  required double fontSize,
-  required double width,
-  required double radius,
-  required Color colorText,
-  required Color colorBg,
+  void Function()? onTap,
+  double? height,
+  double? fontSize,
+  double? width,
+  double? radius,
+  Color? colorText,
+  Color? colorBg,
 }) {
   height ??= 30;
   width ??= height * 2 / 0.7;
   radius ??= height / 2;
   fontSize ??= 14;
   colorText ??= Colors.black;
-  colorBg ??= Colors.grey[100]!;
+  colorBg ??= Colors.grey[100];
   return GestureDetector(
     onTap: onTap,
     child: Container(
@@ -108,19 +108,16 @@ Widget lButton(
           color: colorBg,
           borderRadius: BorderRadiusDirectional.all(Radius.circular(radius))),
       child: lText(text,
-          color: colorText,
-          size: fontSize,
-          bold: true,
-          overflow: TextOverflow.clip),
+          color: colorText ?? Colors.black, size: fontSize, bold: true),
     ),
   );
 }
 
 Widget lIconButton(
   IconData icon, {
-  required double size,
-  required Color color,
-  required Function onTap,
+  double? size,
+  Color? color,
+  void Function()? onTap,
 }) {
   size ??= 36;
   color ??= Colors.white;
@@ -131,6 +128,6 @@ Widget lIconButton(
       size: size,
       color: color,
     ),
-    onPressed: onTap as void Function()?,
+    onPressed: onTap,
   );
 }

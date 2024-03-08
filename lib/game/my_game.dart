@@ -20,6 +20,8 @@ class MyGame extends Forge2DGame {
 
   bool hide;
 
+  Vector2 get center => Vector2(size.x / 2, size.y / 2);
+
   @override
   Future<void> onLoad() async {
     await GameOnload(this).onLoad();

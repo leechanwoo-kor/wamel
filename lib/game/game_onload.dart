@@ -29,20 +29,19 @@ class GameOnload {
     inited = true;
   }
 
-  ///初始化
   Future<void> onLoad() async {
     await init();
-    final background = Background.create(gameRef.viewport);
+    final background = Background.create(gameRef);
     await gameRef.add(background);
-    final deadLine = DeadLine.create(gameRef.viewport);
+    final deadLine = await DeadLine.create(gameRef);
     await gameRef.add(deadLine);
     GameState.scoreComponent =
-        Scores.create(gameRef.viewport, text: GameState.score.toString());
+        Scores.create(gameRef, text: GameState.score.toString());
     await gameRef.add(GameState.scoreComponent);
-    final settingButton = SettingButton.create(gameRef.viewport);
+    final settingButton = await SettingButton.create(gameRef);
     await gameRef.add(settingButton);
     await GenerateBall(gameRef).generateBall();
-    //初始化 game controllers
+
     await gameRef.add(UpdateBallsFalling());
     await gameRef.add(UpdateBallsBounce());
     await gameRef.add(UpdateLevelUp());

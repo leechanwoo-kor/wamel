@@ -7,7 +7,7 @@ class ScreenConfig extends StatelessWidget {
     required this.builder,
     this.designSize = ScreenTool.defaultSize,
     this.allowFontScaling = false,
-    required Key key,
+    Key? key,
   }) : super(key: key);
 
   final Widget Function() builder;

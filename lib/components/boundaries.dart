@@ -1,6 +1,4 @@
-import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
-import 'package:forge2d/forge2d.dart';
 
 List<Wall> createBoundaries(Vector2 screenSize) {
   final topRight = screenSize / 2;
@@ -25,8 +23,7 @@ class Wall extends BodyComponent {
 
   @override
   Body createBody() {
-    final shape = EdgeShape()
-      ..set(start, end);
+    final shape = EdgeShape()..set(start, end);
 
     final fixtureDef = FixtureDef(shape)
       ..restitution = 0.0

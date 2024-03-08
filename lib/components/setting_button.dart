@@ -1,34 +1,28 @@
 import 'package:flame/components.dart';
-import 'package:flame_forge2d/viewport.dart';
-import 'package:flutter/material.dart' hide Viewport;
+import 'package:flame/events.dart';
+import 'package:wamel/game/game_life.dart';
+import 'package:wamel/game/my_game.dart';
 
-import '../game/game_life.dart';
-import '../tools/image/image_tool.dart';
 import '../tools/size_tool.dart';
 
-class SettingButton extends SpriteComponent with Tapable, HasGameRef {
+class SettingButton extends SpriteComponent with TapCallbacks, HasGameRef {
   static double margin = 5;
 
-  @override
-  Vector2 position;
+  SettingButton({Sprite? sprite, Vector2? size, Vector2? position})
+      : super(sprite: sprite, size: size, position: position);
 
   @override
-  bool onTapDown(TapDownDetails details) {
-    GameLife(gameRef).setting();
+  bool onTapDown(TapDownEvent event) {
+    GameLife.setting();
     return true;
   }
 
-  static SettingButton create(Viewport viewport) {
-    final sprite = Sprite(ImageTool.image('setting.png'));
+  static Future<SettingButton> create(MyGame gameRef) async {
+    final sprite = await Sprite.load('setting.png');
     return SettingButton(
-        sprite: sprite,
-        size: Vector2(
-          viewport.vw(10),
-          viewport.vw(10),
-        ),
-        position: Vector2(viewport.vw(100 - margin - 10), viewport.vw(margin)));
+      sprite: sprite,
+      size: Vector2(gameRef.vw(10), gameRef.vw(10)),
+      position: Vector2(gameRef.vw(100 - margin - 10), gameRef.vw(margin)),
+    );
   }
-
-  SettingButton({Sprite sprite, Vector2 size, this.position})
-      : super.fromSprite(size, sprite);
 }

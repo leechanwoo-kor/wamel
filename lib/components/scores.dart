@@ -1,40 +1,39 @@
 import 'package:flame/components.dart';
-import 'package:flame/game.dart';
+import 'package:flame/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:wamel/game/my_game.dart';
 
-class Scores extends TextComponent with HasGameRef {
-  static final double margin = 5.0;
+import '../tools/size_tool.dart';
 
-  Scores({
-    required String text,
-    required Vector2 position,
-    double? textSize,
-    Color? color,
-  }) : super(
-          text: text,
-          position: position,
-          textRenderer: TextPaint(
-            style: TextStyle(
-              fontSize: textSize,
-              color: color ?? Colors.orange,
-            ),
-          ),
-        );
+class Scores extends TextComponent {
+  static double margin = 5;
 
   static Scores create(
-    Game game, {
-    required String text,
+    MyGame game, {
+    String? text,
     Color? color,
     double? size,
   }) {
-    final gameSize = game.size;
-    final textSize = size ?? gameSize[0] * 0.1; // 예: 뷰포트 너비의 10%로 설정
-    final position = Vector2(margin, gameSize[1] - textSize - margin); // 화면 하단에 위치
+    color ??= Colors.orange;
+    size ??= game.vw(10);
     return Scores(
-      text: text,
-      position: position,
-      textSize: textSize,
-      color: color,
-    );
+        text: text ?? '',
+        textRenderer: TextPaint(
+          style: TextStyle(
+            color: color,
+            fontSize: size,
+          ),
+        ),
+        position: Vector2(game.vw(margin), game.vw(margin)));
   }
+
+  Scores({
+    String? text,
+    required TextPaint textRenderer,
+    required Vector2 position,
+  }) : super(
+          text: text,
+          textRenderer: textRenderer,
+          position: position,
+        );
 }

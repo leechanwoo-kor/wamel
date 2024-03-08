@@ -21,13 +21,10 @@ class GameOverPage extends StatelessWidget {
   GameOverPage(
     this.gameRef, {
     required this.isWin,
-  }) {
-    isWin ??= true;
-  }
+  });
 
   void _share() async {
-    await ShareTool.share(
-        '我合成大西瓜的最高分是${GameState.record}！关注微信号：乂乂又又，回复：大西瓜，就有链接了^^');
+    await ShareTool.share('나의 수박만들기 최고 점수는 ${GameState.record}! 링크입니다 ^^');
   }
 
   void _retry() {
@@ -49,7 +46,6 @@ class GameOverPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenConfig(
-      key: Key('screen_config_key'),
       builder: () => WillPopScope(
         onWillPop: () async {
           _retry();
@@ -61,7 +57,7 @@ class GameOverPage extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  lExpanded(child: _topAction(), flex: 1),
+                  lExpanded(child: _topAction()),
                   ...GameState.isNewRecord ? _newRecord() : _normalRecord(),
                   if (isWin)
                     Stack(
@@ -73,7 +69,7 @@ class GameOverPage extends StatelessWidget {
                     ),
                   lHeight(10.vw),
                   lExpanded(
-                    child: _bottomAction(), flex: 1,
+                    child: _bottomAction(),
                   ),
                 ],
               ),
@@ -93,7 +89,7 @@ class GameOverPage extends StatelessWidget {
             color: Colors.white,
             onTap: _home,
           ),
-          lExpanded(flex: 1, child: Container()),
+          lExpanded(),
           lIconButton(
             Icons.settings,
             size: 10.vw,
@@ -108,31 +104,23 @@ class GameOverPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           lButton(
-            '공유',
+            '分享一下',
             onTap: _share,
             height: 5.vw * 2.2,
             colorBg: Colors.black,
             colorText: Colors.white,
-            fontSize: 0.0,
-            width: 0.0,
-            radius: 0.0,
           ),
           lButton(
-            '다시하기',
+            '再来一次',
             onTap: _retry,
             height: 5.vw * 2.2,
-            fontSize: 0.0,
-            width: 0.0,
-            radius: 0.0,
-            colorText: Colors.white,
-            colorBg: Colors.black,
           ),
         ],
       );
 
   List<Widget> _normalRecord() => [
         Text(
-          '최고점：${GameState.record}',
+          '最高分：${GameState.record}',
           style: TextStyle(
             fontSize: 24,
             color: Colors.white,
@@ -141,7 +129,7 @@ class GameOverPage extends StatelessWidget {
         ),
         lHeight(10.vw),
         Text(
-          '점수：${GameState.score}',
+          '得分：${GameState.score}',
           style: TextStyle(
             fontSize: 36,
             color: Colors.orange,
@@ -153,7 +141,7 @@ class GameOverPage extends StatelessWidget {
 
   List<Widget> _newRecord() => [
         Text(
-          '신기록',
+          '新纪录',
           style: TextStyle(
             fontSize: 36,
             color: Colors.white,
