@@ -15,6 +15,12 @@ class Ball extends BodyComponent {
   bool bouncing;
   late SpriteComponent spriteComponent;
 
+  Vector2 get size => spriteComponent.size;
+
+  set size(Vector2 newSize) {
+    spriteComponent.size = newSize;
+  }
+
   // Vector2 get position =>
   //     viewport.getWorldToScreen(body?.position ?? Vector2.zero());
 
@@ -118,9 +124,9 @@ class Ball extends BodyComponent {
     );
 
     final fixtureDef = FixtureDef(shape)
-      ..restitution = 0.1 //弹性
-      ..density = 0.1 //密度
-      ..friction = 0.1; //摩擦力
+      ..restitution = 0.1
+      ..density = 0.1
+      ..friction = 0.1;
 
     return world.createBody(bodyDef)..createFixture(fixtureDef);
   }

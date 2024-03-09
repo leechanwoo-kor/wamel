@@ -22,12 +22,12 @@ class _ImageCropPageState extends State<ImageCropPage> {
   final cropShape = BoxShape.circle;
   final cropFit = BoxFit.contain;
 
-  Widget cropImage;
+  late Widget cropImage;
 
   Future<void> _crop() async {
     final pixelRatio = MediaQuery.of(context).devicePixelRatio;
     final cropped = await cropController.crop(pixelRatio: pixelRatio);
-    final path = await ImageTool.saveImage(cropped);
+    final path = await ImageTool.saveImage(cropped!);
     NavigatorTool.pop(path);
     CircleAvatar();
   }
@@ -81,7 +81,7 @@ class _ImageCropPageState extends State<ImageCropPage> {
       child: Crop(
         controller: cropController,
         shape: cropShape,
-        fit: cropFit,
+        // fit: cropFit,
         child: cropImage,
       ),
     );

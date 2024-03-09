@@ -10,26 +10,27 @@ class GameSetting {
   bool gravity;
 
   GameSetting({
-    this.levelUp,
-    this.random,
-    this.music,
-    this.bloom,
-    this.gravity,
-  }) {
-    levelUp ??= true;
-    random ??= true;
-    music ??= true;
-    bloom ??= true;
-    gravity ??= false;
-  }
+    this.levelUp = true,
+    this.random = true,
+    this.music = true,
+    this.bloom = true,
+    this.gravity = false,
+  });
 
-  GameSetting.fromJson(Map<String, dynamic> json) {
-    levelUp = json['levelUp'];
-    random = json['random'];
-    music = json['music'];
-    bloom = json['bloom'];
-    gravity = json['gravity'];
-  }
+  // GameSetting.fromJson(Map<String, dynamic> json) {
+  //   levelUp = json['levelUp'];
+  //   random = json['random'];
+  //   music = json['music'];
+  //   bloom = json['bloom'];
+  //   gravity = json['gravity'];
+  // }
+
+  GameSetting.fromJson(Map<String, dynamic> json)
+      : levelUp = json['levelUp'] as bool,
+        random = json['random'] as bool,
+        music = json['music'] as bool,
+        bloom = json['bloom'] as bool,
+        gravity = json['gravity'] as bool;
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};

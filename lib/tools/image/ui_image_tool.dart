@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'dart:ui';
 
 extension UiImageToBytes on Image {
-  Future<Uint8List?> toBytes() async {
+  Future<Uint8List> toBytes() async {
     final byteData = await toByteData(format: ImageByteFormat.png);
-    return byteData?.buffer.asUint8List();
+    return byteData!.buffer.asUint8List();
   }
 }
 

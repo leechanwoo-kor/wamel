@@ -1,3 +1,5 @@
+import 'package:flame/src/components/core/component.dart';
+
 import '../components/background.dart';
 import '../components/dead_line.dart';
 import '../components/scores.dart';
@@ -37,7 +39,7 @@ class GameOnload {
     await gameRef.add(deadLine);
     GameState.scoreComponent =
         Scores.create(gameRef, text: GameState.score.toString());
-    await gameRef.add(GameState.scoreComponent);
+    await gameRef.add(GameState.scoreComponent as Component);
     final settingButton = await SettingButton.create(gameRef);
     await gameRef.add(settingButton);
     await GenerateBall(gameRef).generateBall();

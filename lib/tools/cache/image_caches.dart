@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:flutter/services.dart';
@@ -19,36 +18,36 @@ class ImageCaches {
     return image?.loadedImage ?? _loadedFiles.values.first.loadedImage;
   }
 
-  Future<Image?> loadBytes(String path, Uint8List bytes) async {
+  Future<Image> loadBytes(String path, Uint8List bytes) async {
     _loadedFiles[path] = _ImageLoader(_loadBytes(bytes));
-    return await _loadedFiles[path]?.retrieve();
+    return await _loadedFiles[path]!.retrieve();
   }
 
-  Future<Image?> loadImage(String path, Image img) async {
+  Future<Image> loadImage(String path, Image img) async {
     _loadedFiles[path] = _ImageLoader(Future.value(img));
-    return await _loadedFiles[path]?.retrieve();
+    return await _loadedFiles[path]!.retrieve();
   }
 
   Future<List<Image>> loadAll(List<String> fileNames) async {
-    return Future.wait(fileNames.map(load as Future<Image> Function(String e)));
+    return Future.wait(fileNames.map(load));
   }
 
-  Future<Future<Image?>> load(String fileName) async {
+  Future<Image> load(String fileName) async {
     return fileName.startsWith('/') ? fromFile(fileName) : fromBundle(fileName);
   }
 
-  Future<Image?> fromBundle(String fileName) async {
+  Future<Image> fromBundle(String fileName) async {
     if (!_loadedFiles.containsKey(fileName)) {
       _loadedFiles[fileName] = _ImageLoader(_fetchToMemory(fileName));
     }
-    return await _loadedFiles[fileName]?.retrieve();
+    return await _loadedFiles[fileName]!.retrieve();
   }
 
-  Future<Image?> fromFile(String path) async {
+  Future<Image> fromFile(String path) async {
     if (!_loadedFiles.containsKey(path)) {
       _loadedFiles[path] = _ImageLoader(_fetchFromFile(path));
     }
-    return await _loadedFiles[path]?.retrieve();
+    return await _loadedFiles[path]!.retrieve();
   }
 
   Future<Image> _fetchFromFile(String path) async {
@@ -70,13 +69,13 @@ class ImageCaches {
 }
 
 class _ImageLoader {
-  _ImageLoader(this.future) : loadedImage;
+  _ImageLoader(this.future);
 
-  Image loadedImage;
+  late Image loadedImage;
   Future<Image> future;
 
   Future<Image> retrieve() async {
-    loadedImage ??= await future;
+    // loadedImage ??= await future;
     return loadedImage;
   }
 }

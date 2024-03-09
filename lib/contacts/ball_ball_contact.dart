@@ -1,10 +1,9 @@
-import 'package:flame_forge2d/contact_callbacks.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 
 import '../components/ball.dart';
 import '../game/game_state.dart';
 
-class BallBallContactCallback extends ContactCallback<Ball, Ball> {
+class BallBallContactCallback extends ContactCallbacks {
   @override
   void begin(Ball ball1, Ball ball2, Contact contact) {
     if (GameState.gameStatus != GameStatus.start) return;

@@ -55,7 +55,7 @@ class _InnerLevelPageState extends State<InnerLevelPage> {
     );
   }
 
-  int checkedIndex;
+  late int checkedIndex;
 
   Widget _innerLevelsList() {
     return !loaded
@@ -80,6 +80,8 @@ class _InnerLevelPageState extends State<InnerLevelPage> {
                     await Levels.sets(innerLevels[index]);
                     setState(() {});
                   },
+                  width: 0.0,
+                  height: 0.0,
                 ),
               );
             },
@@ -117,17 +119,17 @@ class LevelImageList extends StatefulWidget {
   final double width, height;
   final List<Level> items;
   LevelImageList({
-    this.items,
-    this.width,
-    this.height,
-    this.onTap,
+    required this.items,
+    required this.width,
+    required this.height,
+    required this.onTap,
   });
   @override
   _LevelImageListState createState() => _LevelImageListState();
 }
 
 class _LevelImageListState extends State<LevelImageList> {
-  PageController controller;
+  late PageController controller;
 
   Future<void> onTapImage(Level level) async {
     if (widget.onTap != null) await widget.onTap();
@@ -136,7 +138,7 @@ class _LevelImageListState extends State<LevelImageList> {
   int currentPage = 0;
 
   void _pageListener() {
-    var next = controller.page.round();
+    var next = controller.page!.round();
     if (currentPage != next) {
       setState(() {
         currentPage = next;

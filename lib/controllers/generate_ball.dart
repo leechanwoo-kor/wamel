@@ -23,8 +23,8 @@ class GenerateBall {
     if (!canGenerateBall) return;
     if (GameState.gameStatus != GameStatus.start) return;
     if (GameState.lastBall != null) {
-      GameState.lastBall.fallPosition.x = x;
-      GameState.lastBall.moving = true;
+      GameState.lastBall?.fallPosition.x = x;
+      GameState.lastBall?.moving = true;
     }
     final level = await Levels.generateLevel();
     final position = Vector2(x,

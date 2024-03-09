@@ -17,9 +17,9 @@ List<Wall> createBoundaries(Vector2 screenSize) {
 class Wall extends BodyComponent {
   final Vector2 start;
   final Vector2 end;
-  final int id;
+  final int side;
 
-  Wall(this.start, this.end, this.id);
+  Wall(this.start, this.end, this.side);
 
   @override
   Body createBody() {

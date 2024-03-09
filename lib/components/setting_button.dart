@@ -5,7 +5,8 @@ import 'package:wamel/game/my_game.dart';
 
 import '../tools/size_tool.dart';
 
-class SettingButton extends SpriteComponent with TapCallbacks, HasGameRef {
+class SettingButton extends SpriteComponent
+    with TapCallbacks, HasGameRef<MyGame> {
   static double margin = 5;
 
   SettingButton({Sprite? sprite, Vector2? size, Vector2? position})
@@ -13,7 +14,7 @@ class SettingButton extends SpriteComponent with TapCallbacks, HasGameRef {
 
   @override
   bool onTapDown(TapDownEvent event) {
-    GameLife.setting();
+    GameLife(gameRef).setting();
     return true;
   }
 

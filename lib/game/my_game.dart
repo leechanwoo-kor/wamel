@@ -1,4 +1,5 @@
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 import 'package:flame_forge2d/forge2d_game.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,7 @@ import '../tools/size_tool.dart';
 import 'game_init.dart';
 import 'game_onload.dart';
 
-class MyGame extends Forge2DGame {
+class MyGame extends Forge2DGame with TapCallbacks {
   MyGame(
     double width,
     double height, {
@@ -28,11 +29,11 @@ class MyGame extends Forge2DGame {
   }
 
   @override
-  void onTapDown(_, TapDownDetails details) {
+  void onTapDown(TapDownEvent event) {
     if (hide) return;
-    super.onTapDown(_, details);
-    if (details.localPosition.dy > viewport.vw(30)) {
-      GenerateBall(this).generateBall(details.localPosition.dx);
+    super.onTapDown(event);
+    if (event.localPosition.y > this.vw(30)) {
+      GenerateBall(this).generateBall(event.localPosition.x);
     }
   }
 

@@ -9,8 +9,8 @@ class GameState {
   static bool isNewRecord = false;
   static GameStatus gameStatus = GameStatus.start;
   static GameSetting gameSetting = GameSetting();
-  static Ball lastBall;
-  static Scores scoreComponent;
+  static Ball? lastBall;
+  static Scores? scoreComponent;
 
   static Future<void> updateScore(int newScore) async {
     score = newScore;

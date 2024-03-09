@@ -40,21 +40,22 @@ class ImageTool {
 
   static Image image(String path) => imageCaches.fromCache(path);
 
-  static Future<Future<Uint8List?>> imageBytes(String path) async =>
+  static Future<Uint8List> imageBytes(String path) async =>
       image(path).toBytes();
 
-  static Future<String?> saveImage(Image img) async {
+  static Future<String> saveImage(Image img) async {
+    // if (img == null) return null;
     final timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     final path = '/images/$timestamp.m';
     final bytes = await img.toBytes();
     await imageCaches.loadImage(path, img); //直接加载到内存
-    await FileTool.write(path, bytes!); //持久化到本地
+    await FileTool.write(path, bytes); //持久化到本地
     // await imageCaches.load(path); //从本地加载到内存
     return path;
   }
 
-  static Future<String?> saveBytes(Uint8List bytes) async {
-    if (bytes.isEmpty) return null;
+  static Future<String> saveBytes(Uint8List bytes) async {
+    // if (bytes == null || bytes.isEmpty) return null;
     final timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     final path = '/images/$timestamp.m';
     await imageCaches.loadBytes(path, bytes); //直接加载到内存

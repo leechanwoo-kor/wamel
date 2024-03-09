@@ -132,7 +132,7 @@ class _GameSettingPageState extends State<GameSettingPage> {
         ),
       );
 
-  Widget _switchItem(String lable, {bool value, Function(bool) onChanged}) =>
+  Widget _switchItem(String lable, {required bool value, required Function(bool) onChanged}) =>
       lExpanded(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

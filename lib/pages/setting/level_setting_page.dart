@@ -50,7 +50,7 @@ class _LevelSettingPageState extends State<LevelSettingPage> {
 
   bool get isLast => currentPage == levels.length - 1;
   bool get isFirst => currentPage < 1;
-  int get currentPage => controller.page.toInt();
+  int get currentPage => controller.page!.toInt();
 
   bool loaded = false;
 
@@ -186,17 +186,17 @@ class LevelEditImageList extends StatefulWidget {
   final double width, height;
   final PageController controller;
   LevelEditImageList({
-    this.width,
-    this.height,
-    this.onTap,
-    this.controller,
+    required this.width,
+    required this.height,
+    required this.onTap,
+    required this.controller,
   });
   @override
   _LevelEditImageListState createState() => _LevelEditImageListState();
 }
 
 class _LevelEditImageListState extends State<LevelEditImageList> {
-  PageController controller;
+  late PageController controller;
 
   Future<void> onTapImage(Level level) async {
     if (widget.onTap != null) await widget.onTap(level);
@@ -206,7 +206,7 @@ class _LevelEditImageListState extends State<LevelEditImageList> {
   List get levels => Levels.kLevels;
 
   void _pageListener() {
-    var next = controller.page.round();
+    var next = controller.page!.round();
     if (currentPage != next) {
       setState(() {
         currentPage = next;
