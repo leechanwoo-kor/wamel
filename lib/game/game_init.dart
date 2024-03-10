@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 
 import '../components/boundaries.dart';
@@ -14,8 +17,11 @@ class GameInit {
     final scale = 10.0;
     final gravity = Vector2(0, -1) * size.gravitySize;
     gameRef.world.gravity = gravity;
+    double maxSide = min(size.x, size.y);
+    gameRef.camera.viewport =
+        FixedResolutionViewport(resolution: Vector2.all(maxSide));
     // gameRef.viewport = Viewport(size, scale);
-    final boundaries = createBoundaries(gameRef.size);
+    final boundaries = createBoundaries(gameRef);
     boundaries.forEach(gameRef.add);
     //初始化碰撞检测器
     // gameRef.addContactCallback(BallWallContactCallback());

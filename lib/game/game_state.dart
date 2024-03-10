@@ -39,8 +39,7 @@ class GameState {
 
   static Future<void> initSetting() async {
     if (inited) return;
-    final n = await HiveTool().get<int>('record');
-    if (n != null) record = n;
+    final record = await HiveTool().get<int>('record') ?? 0;
     final s = await HiveTool().get<String>('gameSetting');
     if (s != null) gameSetting = GameSetting.fromJsonStr(s);
     inited = true;

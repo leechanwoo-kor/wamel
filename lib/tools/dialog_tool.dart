@@ -29,7 +29,7 @@ class DialogTool {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('확정'),
+                child: Text('Cancel'),
               ),
             ],
           );

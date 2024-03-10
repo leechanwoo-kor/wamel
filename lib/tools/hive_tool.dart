@@ -4,31 +4,31 @@ import 'package:path_provider/path_provider.dart';
 
 class HiveTool {
   factory HiveTool() => _singleton;
-  // TODO HiveTool._();
-  HiveTool._() : box = Hive.box<dynamic>('app');
-  static final HiveTool _singleton = HiveTool._();
+  HiveTool._internal();
 
-  Box box;
-  String boxName = 'app';
+  static final HiveTool _singleton = HiveTool._internal();
+  late Box<dynamic> box;
+  final String boxName = 'app';
 
-  bool get inited => box != null;
+  bool get inited => Hive.isBoxOpen(boxName);
 
   Future<void> init() async {
     if (!kIsWeb) {
       final directory = await getApplicationDocumentsDirectory();
       Hive.init(directory.path);
     }
-    box = await Hive.openBox(boxName);
+    if (!Hive.isBoxOpen(boxName)) {
+      box = await Hive.openBox(boxName);
+    }
   }
 
-  Future<T> get<T>(String key) async {
-    if (!inited) await HiveTool().init();
-    final value = await HiveTool().box.get(key);
-    return value as T;
+  Future<T?> get<T>(String key) async {
+    if (!inited) await init();
+    return box.get(key);
   }
 
   Future<void> set<T>(String key, T value) async {
-    if (!HiveTool().inited) await HiveTool().init();
-    await HiveTool().box.put(key, value);
+    if (!inited) await init();
+    await box.put(key, value);
   }
 }

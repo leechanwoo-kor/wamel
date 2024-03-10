@@ -14,7 +14,6 @@ class MyGame extends Forge2DGame with TapCallbacks {
     double height, {
     required this.hide,
   }) {
-    hide ??= false;
     final viewportSize = Vector2(width, height);
     GameInit(this).init(viewportSize);
   }
@@ -32,7 +31,7 @@ class MyGame extends Forge2DGame with TapCallbacks {
   void onTapDown(TapDownEvent event) {
     if (hide) return;
     super.onTapDown(event);
-    if (event.localPosition.y > this.vw(30)) {
+    if (event.localPosition.y > vw(30)) {
       GenerateBall(this).generateBall(event.localPosition.x);
     }
   }

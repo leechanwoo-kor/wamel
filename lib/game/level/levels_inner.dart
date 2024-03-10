@@ -2,24 +2,24 @@ import 'level.dart';
 
 class LevelsInner {
   static final levels = {
-    'friut': _friutsLevels,
-    'emoji': _emojiLevels,
-    '985': _985Levels,
-    'shandong': _shandongLevels,
+    'friut': _fruitsLevels,
+    // 'emoji': _emojiLevels,
+    // '985': _985Levels,
+    // 'shandong': _shandongLevels,
   };
 
-  static final _friutsLevels = <Level>[
-    Level(2.0, 'friuts/1.png'),
-    Level(4.0, 'friuts/2.png'),
-    Level(6.0, 'friuts/3.png'),
-    Level(8.0, 'friuts/4.png'),
-    Level(10.0, 'friuts/5.png'),
-    Level(12.0, 'friuts/6.png'),
-    Level(14.0, 'friuts/7.png'),
-    Level(16.0, 'friuts/8.png'),
-    Level(18.0, 'friuts/9.png'),
-    Level(20.0, 'friuts/10.png'),
-    Level(22.0, 'friuts/11.png'),
+  static final _fruitsLevels = <Level>[
+    Level(2.0, 'fruits/1.png'),
+    Level(4.0, 'fruits/2.png'),
+    Level(6.0, 'fruits/3.png'),
+    Level(8.0, 'fruits/4.png'),
+    Level(10.0, 'fruits/5.png'),
+    Level(12.0, 'fruits/6.png'),
+    Level(14.0, 'fruits/7.png'),
+    Level(16.0, 'fruits/8.png'),
+    Level(18.0, 'fruits/9.png'),
+    Level(20.0, 'fruits/10.png'),
+    Level(22.0, 'fruits/11.png'),
   ];
 
   static final _emojiLevels = <Level>[

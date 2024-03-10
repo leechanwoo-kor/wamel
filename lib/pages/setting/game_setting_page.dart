@@ -25,20 +25,20 @@ class _GameSettingPageState extends State<GameSettingPage> {
   }
 
   void _goHome() {
-    NavigatorTool.pop(); //pop setting page
+    NavigatorTool.pop();
     if (GameState.gameStatus != GameStatus.pause) {
-      NavigatorTool.pop(); //pop gameover page
+      NavigatorTool.pop();
     }
-    NavigatorTool.pop(); //pop game page
+    NavigatorTool.pop();
   }
 
   Future<void> _more() async {
     if (!widget.fromHome) {
       await DialogTool.show(
         context,
-        title: '提示',
-        content: '只能从首页进入高级设置',
-        actionText: '首页',
+        title: 'hint',
+        content: 'Advanced settings can only be accessed from the home page',
+        actionText: 'first page',
         action: _goHome,
       );
       return;
@@ -49,13 +49,13 @@ class _GameSettingPageState extends State<GameSettingPage> {
 
   GameSetting get setting => GameState.gameSetting;
 
-  String get _levelUp => setting.levelUp ? '合成大瓜' : '合成小瓜';
+  String get _levelUp => setting.levelUp ? 'Large melon' : 'Small melon';
 
   String get _random => setting.random
-      ? '随机模式'
+      ? 'random mode'
       : setting.levelUp
-          ? '小瓜模式'
-          : '大瓜模式';
+          ? 'Small melon'
+          : 'Large melon';
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +73,10 @@ class _GameSettingPageState extends State<GameSettingPage> {
                   if (!widget.fromHome) {
                     await DialogTool.show(
                       context,
-                      title: '提示',
-                      content: '只能从首页进入设置该选项',
-                      actionText: '首页',
+                      title: 'hint',
+                      content:
+                          'You can only access this option from the home page.',
+                      actionText: 'first page',
                       action: _goHome,
                     );
                     return;
@@ -88,16 +89,18 @@ class _GameSettingPageState extends State<GameSettingPage> {
                   setting.random = v;
                   await setting.update();
                 }),
-                _switchItem('重力感应', value: setting.gravity,
+                _switchItem('gravity', value: setting.gravity,
                     onChanged: (v) async {
                   setting.gravity = v;
                   await setting.update();
                 }),
-                _switchItem('音效', value: setting.music, onChanged: (v) async {
+                _switchItem('sound', value: setting.music,
+                    onChanged: (v) async {
                   setting.music = v;
                   await setting.update();
                 }),
-                _switchItem('动效', value: setting.bloom, onChanged: (v) async {
+                _switchItem('effect', value: setting.bloom,
+                    onChanged: (v) async {
                   setting.bloom = v;
                   await setting.update();
                 }),
@@ -122,7 +125,7 @@ class _GameSettingPageState extends State<GameSettingPage> {
             ),
             lExpanded(),
             lButton(
-              '高级设置',
+              'Advanced Settings',
               onTap: _more,
               height: 5.vw * 2.2,
               colorBg: Colors.black,
@@ -132,7 +135,8 @@ class _GameSettingPageState extends State<GameSettingPage> {
         ),
       );
 
-  Widget _switchItem(String lable, {required bool value, required Function(bool) onChanged}) =>
+  Widget _switchItem(String lable,
+          {required bool value, required Function(bool) onChanged}) =>
       lExpanded(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

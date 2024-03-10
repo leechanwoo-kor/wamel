@@ -1,7 +1,8 @@
 import 'package:flame_forge2d/flame_forge2d.dart';
+import 'package:wamel/game/my_game.dart';
 
-List<Wall> createBoundaries(Vector2 screenSize) {
-  final topRight = screenSize / 2;
+List<Wall> createBoundaries(MyGame game) {
+  final topRight = game.size / 2;
   final bottomLeft = -topRight;
   final topLeft = Vector2(bottomLeft.x, topRight.y);
   final bottomRight = Vector2(topRight.x, bottomLeft.y);

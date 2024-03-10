@@ -5,17 +5,19 @@ import 'tools/navigator_tool.dart';
 import 'tools/system_tool.dart';
 
 void main() async {
-  runApp(MyApp());
+  runApp(const MyApp());
   SystemTool.keepPortrait();
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'watermelon',
       navigatorObservers: [NavigatorTool()],
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

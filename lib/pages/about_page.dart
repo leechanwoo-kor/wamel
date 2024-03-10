@@ -46,7 +46,8 @@ class AboutPage extends StatelessWidget {
                 ),
                 lExpanded(),
                 Image.asset(
-                  'assets/images/qr.jpg',
+                  // 'assets/images/qr.jpg',
+                  'assets/images/ai.jpg',
                   width: 30.vw,
                 ),
                 lExpanded(flex: 10, child: _homeSite()),
@@ -63,7 +64,7 @@ class AboutPage extends StatelessWidget {
   }
 
   Widget _homeSite() {
-    final url = 'https://xbox.work';
+    final url = 'https://github.com/leechanwoo-kor/wamel';
     return GestureDetector(
       onTap: () {
         UrlTool.open(url);

@@ -55,7 +55,7 @@ class _InnerLevelPageState extends State<InnerLevelPage> {
     );
   }
 
-  late int checkedIndex;
+  late int checkedIndex = 1;
 
   Widget _innerLevelsList() {
     return !loaded
@@ -100,7 +100,7 @@ class _InnerLevelPageState extends State<InnerLevelPage> {
             ),
             lExpanded(
                 child: lText(
-              '更换主题',
+              'Change theme',
               bold: true,
               size: 18,
             )),
@@ -157,7 +157,7 @@ class _LevelImageListState extends State<LevelImageList> {
     Future.delayed(Duration.zero, () async {
       if (widget.items.length > 1) {
         await controller.animateToPage(
-          2, //居中
+          2,
           duration: Duration(milliseconds: 100),
           curve: Curves.easeOutQuint,
         );

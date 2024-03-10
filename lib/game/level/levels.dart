@@ -68,8 +68,16 @@ class Levels {
   static Future<void> init() async {
     if (inited) return;
     final bg = await HiveTool().get<String>('background');
-    background = bg;
+    if (bg != null) {
+      background = bg;
+    } else {
+      await HiveTool().set<String>('background', background);
+    }
     final result = await HiveTool().get<String>('kLevels');
+    if (result == null) {
+      await setDefaultLevels();
+      return;
+    }
     final levels = Level.fromJsons(result);
     await sets(levels);
     return;

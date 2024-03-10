@@ -47,7 +47,7 @@ class _ImageCropPageState extends State<ImageCropPage> {
   void initState() {
     super.initState();
     cropImage = Image.asset(
-      'assets/images/friuts/10.png',
+      'assets/images/fruits/10.png',
       fit: cropFit,
     );
     _pickImage();
@@ -99,7 +99,7 @@ class _ImageCropPageState extends State<ImageCropPage> {
             ),
             lExpanded(
                 child: lText(
-              '裁剪图片',
+              'Cutting pictures',
               bold: true,
               size: 18,
             )),
@@ -118,7 +118,7 @@ class _ImageCropPageState extends State<ImageCropPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             lButton(
-              '确定',
+              'Confirm',
               onTap: _crop,
               height: 5.vw * 2.2,
               colorBg: Colors.black,

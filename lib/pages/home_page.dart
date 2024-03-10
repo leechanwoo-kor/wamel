@@ -11,6 +11,8 @@ import 'game_page.dart';
 import 'setting/game_setting_page.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   void _start() {
     GameLife.start();
   }
@@ -49,13 +51,12 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-  ///预加载
+  
   Widget _hideGame() => Offstage(
         child: Container(
           width: 1,
           height: 1,
-          child: GamePage(hide: true),
+          child: const GamePage(hide: true),
         ),
       );
 

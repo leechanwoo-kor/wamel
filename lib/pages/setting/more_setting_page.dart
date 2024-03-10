@@ -28,11 +28,11 @@ class MoreSettingPage extends StatelessWidget {
               children: [
                 _topAction(),
                 lExpanded(),
-                _button('更换主题', InnerLevelPage()),
+                _button('Change theme', InnerLevelPage()),
                 lHeight(10.vw),
-                _button('更换背景', BackgroundPage()),
+                _button('Change background', BackgroundPage()),
                 lHeight(10.vw),
-                _button('更换图片', LevelSettingPage()),
+                _button('Change picture', LevelSettingPage()),
                 lExpanded(),
               ],
             ),
@@ -54,7 +54,7 @@ class MoreSettingPage extends StatelessWidget {
             ),
             lExpanded(
                 child: lText(
-              '高级设置',
+              'Advanced Settings',
               bold: true,
               size: 18,
             )),

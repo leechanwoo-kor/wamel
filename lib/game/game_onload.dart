@@ -1,4 +1,4 @@
-import 'package:flame/src/components/core/component.dart';
+import 'package:flame/components.dart';
 
 import '../components/background.dart';
 import '../components/dead_line.dart';

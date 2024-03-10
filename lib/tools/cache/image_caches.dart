@@ -15,7 +15,8 @@ class ImageCaches {
   Image fromCache(String fileName) {
     final image = _loadedFiles[fileName];
     //todo default img
-    return image?.loadedImage ?? _loadedFiles.values.first.loadedImage;
+    // return image?.loadedImage ?? Image.memory(Uint8List(0));
+    return image?.loadedImage ?? _loadedFiles.values.first.loadedImage!;
   }
 
   Future<Image> loadBytes(String path, Uint8List bytes) async {
@@ -56,7 +57,7 @@ class ImageCaches {
   }
 
   Future<Image> _fetchToMemory(String name) async {
-    final data = await rootBundle.load('assets/images/' + name);
+    final data = await rootBundle.load('assets/images/$name');
     final bytes = Uint8List.view(data.buffer);
     return _loadBytes(bytes);
   }
@@ -71,11 +72,14 @@ class ImageCaches {
 class _ImageLoader {
   _ImageLoader(this.future);
 
-  late Image loadedImage;
+  // late Image loadedImage;
+  Image? loadedImage;
   Future<Image> future;
 
   Future<Image> retrieve() async {
-    // loadedImage ??= await future;
-    return loadedImage;
+    if (loadedImage == null) {
+      loadedImage = await future;
+    }
+    return loadedImage!;
   }
 }
