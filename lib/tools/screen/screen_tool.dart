@@ -10,7 +10,7 @@ class ScreenTool {
         uiSize = Size(0, 0);
   static final ScreenTool _instance = ScreenTool._();
 
-  static const Size defaultSize = Size(1080, 1920);
+  static const Size defaultSize = Size(360, 640);
 
   Size uiSize;
 
@@ -50,13 +50,14 @@ class ScreenTool {
 
   double radius(num r) => r * scaleText;
 
-  double font(num fontSize, {required bool allowScaling}) => allowScaling == null
-      ? (allowFontScaling
-          ? (fontSize * scaleText) * _textScaleFactor
-          : (fontSize * scaleText))
-      : (allowScaling
-          ? (fontSize * scaleText) * _textScaleFactor
-          : (fontSize * scaleText));
+  double font(num fontSize, {required bool allowScaling}) =>
+      allowScaling == null
+          ? (allowFontScaling
+              ? (fontSize * scaleText) * _textScaleFactor
+              : (fontSize * scaleText))
+          : (allowScaling
+              ? (fontSize * scaleText) * _textScaleFactor
+              : (fontSize * scaleText));
 
   double get textScaleFactor => _textScaleFactor;
 

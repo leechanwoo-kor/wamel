@@ -5,18 +5,12 @@ import 'package:flutter/material.dart';
 
 import '../controllers/generate_ball.dart';
 import '../tools/size_tool.dart';
-import 'game_init.dart';
 import 'game_onload.dart';
 
-class MyGame extends Forge2DGame with TapCallbacks {
-  MyGame(
-    double width,
-    double height, {
+class MyGame extends Forge2DGame with TapCallbacks, MultiTouchDragDetector {
+  MyGame({
     required this.hide,
-  }) {
-    final viewportSize = Vector2(width, height);
-    GameInit(this).init(viewportSize);
-  }
+  }) : super(gravity: Vector2(0, 100), zoom: 10);
 
   bool hide;
 
@@ -24,13 +18,16 @@ class MyGame extends Forge2DGame with TapCallbacks {
 
   @override
   Future<void> onLoad() async {
+    super.onLoad();
+
+    camera.viewport.add(FpsTextComponent());
     await GameOnload(this).onLoad();
   }
 
   @override
   void onTapDown(TapDownEvent event) {
     if (hide) return;
-    super.onTapDown(event);
+    // super.onTapDown(event);
     if (event.localPosition.y > vw(30)) {
       GenerateBall(this).generateBall(event.localPosition.x);
     }

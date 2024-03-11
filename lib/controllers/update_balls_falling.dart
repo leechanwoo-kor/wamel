@@ -7,7 +7,7 @@ import '../tools/size_tool.dart';
 
 class UpdateBallsFalling extends Component with HasGameRef<MyGame> {
   @override
-  void update(double t) {
+  void update(double dt) {
     if (gameRef.hide) return;
     if (GameState.gameStatus != GameStatus.start) return;
     gameRef.children
@@ -18,7 +18,7 @@ class UpdateBallsFalling extends Component with HasGameRef<MyGame> {
       final p = b.position;
       final fp = b.fallPosition;
       final width = gameRef.vw(100);
-      final left = fp.x < gameRef.center.x;
+      final left = fp.x < gameRef.center.x / 2;
       final center = (fp.x - gameRef.center.x).abs() < gameRef.vw(5);
       if (!center && b.body.linearVelocity.x == 0) {
         b.body.linearVelocity =

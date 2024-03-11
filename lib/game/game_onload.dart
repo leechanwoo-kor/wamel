@@ -1,6 +1,7 @@
 import 'package:flame/components.dart';
 
 import '../components/background.dart';
+import '../components/boundaries.dart';
 import '../components/dead_line.dart';
 import '../components/scores.dart';
 import '../components/setting_button.dart';
@@ -33,13 +34,20 @@ class GameOnload {
 
   Future<void> onLoad() async {
     await init();
+
     final background = Background.create(gameRef);
     await gameRef.add(background);
-    final deadLine = await DeadLine.create(gameRef);
-    await gameRef.add(deadLine);
+
+    final boundaries = createBoundaries(gameRef);
+    boundaries.forEach(gameRef.add);
+
+    // final deadLine = await DeadLine.create(gameRef);
+    // await gameRef.add(deadLine);
+
     GameState.scoreComponent =
         Scores.create(gameRef, text: GameState.score.toString());
     await gameRef.add(GameState.scoreComponent as Component);
+
     final settingButton = await SettingButton.create(gameRef);
     await gameRef.add(settingButton);
     await GenerateBall(gameRef).generateBall();
@@ -48,6 +56,6 @@ class GameOnload {
     await gameRef.add(UpdateBallsBounce());
     await gameRef.add(UpdateLevelUp());
     await gameRef.add(UpdateDeadLine());
-    await gameRef.add(UpdateGravity());
+    // await gameRef.add(UpdateGravity());
   }
 }

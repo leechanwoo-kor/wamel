@@ -12,7 +12,6 @@ class UiImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 等价于
     // return RawImage(image: ImageTool.image(path));
     return FutureBuilder<Uint8List>(
       future: ImageTool.imageBytes(path),

@@ -1,6 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/widgets.dart';
-import 'package:forge2d/forge2d.dart';
+import 'package:wamel/game/my_game.dart';
 
 extension Size2Vector on Size {
   Vector2 get toVector => Vector2(width, height);
@@ -11,8 +11,7 @@ extension Offset2Vector on Offset {
 }
 
 extension Vector2Offset on Vector2 {
-  Offset get toOffset =>
-      Offset(x, y); // Corrected method name from `toVector` to `toOffset`
+  Offset get toOffset => Offset(x, y);
   double get gravitySize => y / 600 * 50;
   double get velocitySize => x / 6;
 }
@@ -33,10 +32,7 @@ extension SizeVector on BuildContext {
 //   double vh(double percent) => percent * (size.y / 100);
 // }
 
-extension GameSizeExtensions on FlameGame {
-  // 가로 너비의 특정 비율을 계산합니다.
-  double vw(double percentage) => size.x * (percentage / 100);
-
-  // 세로 높이의 특정 비율을 계산합니다.
-  double vh(double percentage) => size.y * (percentage / 100);
+extension GameSizeExtensions on MyGame {
+  double vw(double percentage) => camera.viewport.size.x * (percentage / 100);
+  double vh(double percentage) => camera.viewport.size.y * (percentage / 100);
 }

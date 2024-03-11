@@ -11,7 +11,7 @@ class UpdateBallsBounce extends Component with HasGameRef<MyGame> {
     gameRef.children.where((e) => e is Ball && e.bouncing).forEach((ball) {
       Ball b = ball as Ball;
       // final realSize = b.radius * 2 / gameRef.viewport.scale;
-      final realSize = b.radius * 2;
+      final realSize = b.radius * 2 / 100;
       if (b.size.x < realSize) {
         var size = b.size.x + dt * 10 * realSize;
         size = size.clamp(b.size.x, realSize);

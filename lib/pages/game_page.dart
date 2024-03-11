@@ -34,8 +34,6 @@ class _GamePageState extends State<GamePage> {
             SystemTool.changeStatusBarColor();
             return GameWidget(
               game: MyGame(
-                constraints.maxWidth,
-                constraints.maxHeight,
                 hide: widget.hide,
               ),
             );

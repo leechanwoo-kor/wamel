@@ -23,7 +23,7 @@ class UpdateDeadLine extends Component with HasGameRef<MyGame> {
         e is Ball &&
         e.landed &&
         e.position.y < gameRef.vw(DeadLine.marginTop))) {
-      GameLife(gameRef).dead();
+      // GameLife(gameRef).dead();
     }
   }
 }
