@@ -17,7 +17,7 @@ class UpdateGravity extends Component with HasGameRef<MyGame> {
   }
 
   @override
-  void update(double t) {
+  void update(double dt) {
     if (gameRef.hide) return;
     // if (GameState.gameStatus != GameStatus.start) return;
     final size = gameRef.size.gravitySize;

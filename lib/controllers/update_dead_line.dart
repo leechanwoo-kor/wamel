@@ -9,7 +9,7 @@ import '../tools/size_tool.dart';
 
 class UpdateDeadLine extends Component with HasGameRef<MyGame> {
   @override
-  void update(double t) {
+  void update(double dt) {
     if (gameRef.hide) return;
     if (GameState.gameStatus != GameStatus.start) return;
     final almostDeads = gameRef.children.where((e) =>
