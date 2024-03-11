@@ -32,7 +32,10 @@ class UpdateBallsFalling extends Component with HasGameRef<MyGame> {
             position: p,
             level: b.level,
             canFall: true,
-            gameRef: gameRef) as Component);
+            gameRef: gameRef,
+            moving: true,
+            bounce: false,
+            landed: false) as Component);
       }
     });
   }

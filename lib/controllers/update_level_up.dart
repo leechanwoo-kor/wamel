@@ -43,6 +43,7 @@ class UpdateLevelUp extends Component with HasGameRef<MyGame> {
         landed: true,
         bounce: true,
         gameRef: gameRef,
+        moving: true,
       ) as Component);
 
       // BloomParticle 표시

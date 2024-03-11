@@ -13,7 +13,9 @@ class GameLife {
 
   static void start() async {
     await GameOnload.init();
-    await NavigatorTool.push(GamePage());
+    await NavigatorTool.push(GamePage(
+      hide: false,
+    ));
   }
 
   void pause() {
@@ -46,7 +48,9 @@ class GameLife {
 
   void restart() {
     pause();
-    NavigatorTool.replace(GamePage());
+    NavigatorTool.replace(GamePage(
+      hide: true,
+    ));
   }
 
   void back2Home() {

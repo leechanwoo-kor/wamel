@@ -38,7 +38,7 @@ class _GameSettingPageState extends State<GameSettingPage> {
         context,
         title: 'hint',
         content: 'Advanced settings can only be accessed from the home page',
-        actionText: 'first page',
+        actionText: 'Home',
         action: _goHome,
       );
       return;
@@ -76,7 +76,7 @@ class _GameSettingPageState extends State<GameSettingPage> {
                       title: 'hint',
                       content:
                           'You can only access this option from the home page.',
-                      actionText: 'first page',
+                      actionText: 'Home',
                       action: _goHome,
                     );
                     return;

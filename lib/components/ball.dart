@@ -53,27 +53,30 @@ class Ball extends BodyComponent {
   //   );
   // }
 
-  static Future<Ball> create({
+  static Ball create({
     required MyGame gameRef,
     required Vector2 position,
     required int level,
-    bool? moving,
-    bool canFall = true,
-    bool landed = true,
-    bool bounce = true,
-  }) async {
-    // 필요한 경우 비동기 로딩 작업 수행, 예: 스프라이트 로딩
-    final sprite = Levels.sprite(level);
-    // Ball 인스턴스 생성 및 초기화
+    required bool moving,
+    required bool canFall,
+    required bool landed,
+    required bool bounce,
+  }) {
+    // position ??= Vector2.zero();
+    // level ??= 1;
+    // canFall ??= false;
+    // landed ??= false;
+    // moving ??= true;
+    // bounce ??= false;
     return Ball(
+      level: level,
       fallPosition: position,
       isFalling: canFall,
-      level: level,
-      radius: Levels.radius(level),
       landed: landed,
-      moving: true,
+      moving: moving,
       bouncing: bounce,
-      sprite: sprite,
+      sprite: Levels.sprite(level),
+      radius: Levels.radius(level) * (gameRef.size.x / 100),
     );
   }
 
@@ -85,7 +88,7 @@ class Ball extends BodyComponent {
     required this.radius,
     this.landed = false,
     this.moving = true,
-    this.bouncing = false,
+    this.bouncing = true,
     Sprite? sprite,
   }) {
     spriteComponent =

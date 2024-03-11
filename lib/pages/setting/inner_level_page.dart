@@ -80,8 +80,6 @@ class _InnerLevelPageState extends State<InnerLevelPage> {
                     await Levels.sets(innerLevels[index]);
                     setState(() {});
                   },
-                  width: 0.0,
-                  height: 0.0,
                 ),
               );
             },
@@ -116,12 +114,12 @@ class _InnerLevelPageState extends State<InnerLevelPage> {
 
 class LevelImageList extends StatefulWidget {
   final Function onTap;
-  final double width, height;
+  final double? width, height;
   final List<Level> items;
   LevelImageList({
     required this.items,
-    required this.width,
-    required this.height,
+    this.width,
+    this.height,
     required this.onTap,
   });
   @override

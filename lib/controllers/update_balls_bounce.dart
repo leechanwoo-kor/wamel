@@ -21,11 +21,13 @@ class UpdateBallsBounce extends Component with HasGameRef<MyGame> {
         if (!b.isFalling) return;
         gameRef.remove(ball);
         gameRef.add(Ball.create(
+          gameRef: gameRef,
           position: b.position,
           level: b.level,
           canFall: true,
           landed: true,
-          gameRef: gameRef,
+          moving: true,
+          bounce: false,
         ) as Component);
       }
     });

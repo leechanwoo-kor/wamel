@@ -51,12 +51,12 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-  
+
   Widget _hideGame() => Offstage(
         child: Container(
           width: 1,
           height: 1,
-          child: const GamePage(hide: true),
+          child: GamePage(hide: true),
         ),
       );
 
