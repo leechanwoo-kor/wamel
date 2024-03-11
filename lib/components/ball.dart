@@ -1,9 +1,13 @@
 import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
+import 'package:wamel/components/boundaries.dart';
+import 'package:wamel/game/game_state.dart';
 import 'package:wamel/game/level/levels.dart';
 import 'package:wamel/game/my_game.dart';
+import 'package:wamel/tools/audio_tool.dart';
 
-class Ball extends BodyComponent {
+class Ball extends BodyComponent with ContactCallbacks {
+  MyGame gameRef;
   final Vector2 fallPosition;
   final bool isFalling;
   final int level;
@@ -69,6 +73,7 @@ class Ball extends BodyComponent {
     // moving ??= true;
     // bounce ??= false;
     return Ball(
+      gameRef: gameRef,
       level: level,
       fallPosition: position,
       isFalling: canFall,
@@ -76,12 +81,13 @@ class Ball extends BodyComponent {
       moving: moving,
       bouncing: bounce,
       sprite: Levels.sprite(level),
-      radius: Levels.radius(level) * (gameRef.size.x / 100),
+      radius: Levels.radius(level) * (gameRef.camera.viewport.size.x / 100),
     );
   }
 
   Ball({
     // required Vector2 position,
+    required this.gameRef,
     required this.fallPosition,
     required this.isFalling,
     required this.level,
@@ -108,11 +114,10 @@ class Ball extends BodyComponent {
     // final shape = CircleShape()..radius = size.x / 2;
     final shape = CircleShape()..radius = radius;
 
-    // var position = fallPosition.clone();
-    // if (!isFalling) {
-    //   position.x = viewport.center.x;
-    // }
-    // var worldPosition = viewport.getScreenToWorld(position);
+    var position = fallPosition.clone();
+    if (!isFalling) {
+      position.x = gameRef.camera.viewport.size.x / 2;
+    }
 
     // final bodyDef = BodyDef()
     //   ..userData = this
@@ -121,7 +126,7 @@ class Ball extends BodyComponent {
     //   ..type = isFalling ? BodyType.DYNAMIC : BodyType.KINEMATIC;
 
     final bodyDef = BodyDef(
-      position: fallPosition,
+      position: position,
       userData: this,
       type: isFalling ? BodyType.dynamic : BodyType.kinematic,
     );
@@ -132,5 +137,31 @@ class Ball extends BodyComponent {
       ..friction = 0.1;
 
     return world.createBody(bodyDef)..createFixture(fixtureDef);
+  }
+
+  @override
+  void beginContact(Object other, Contact contact) {
+    if (other is Wall) {
+      if (GameState.gameStatus != GameStatus.start) return;
+      if (other.side != 3) return;
+      if (!landed) {
+        AudioTool.fall();
+      }
+      landed = true;
+    }
+    if (other is Ball) {
+      if (GameState.gameStatus != GameStatus.start) return;
+      landed = true;
+      other.landed = true;
+      if (level == other.level) {
+        if (position.y < other.position.y) {
+          isRemoved = true;
+          other.levelUp = true;
+        } else {
+          other.isRemoved = true;
+          levelUp = true;
+        }
+      }
+    }
   }
 }

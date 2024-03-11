@@ -49,7 +49,7 @@ class GameLife {
   void restart() {
     pause();
     NavigatorTool.replace(GamePage(
-      hide: true,
+      hide: false,
     ));
   }
 

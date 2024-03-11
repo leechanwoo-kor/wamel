@@ -104,14 +104,14 @@ class GameOverPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           lButton(
-            '分享一下',
+            'share',
             onTap: _share,
             height: 5.vw * 2.2,
             colorBg: Colors.black,
             colorText: Colors.white,
           ),
           lButton(
-            '再来一次',
+            'retry',
             onTap: _retry,
             height: 5.vw * 2.2,
           ),
@@ -120,7 +120,7 @@ class GameOverPage extends StatelessWidget {
 
   List<Widget> _normalRecord() => [
         Text(
-          '最高分：${GameState.record}',
+          'High Score：${GameState.record}',
           style: TextStyle(
             fontSize: 24,
             color: Colors.white,
@@ -129,7 +129,7 @@ class GameOverPage extends StatelessWidget {
         ),
         lHeight(10.vw),
         Text(
-          '得分：${GameState.score}',
+          'Score：${GameState.score}',
           style: TextStyle(
             fontSize: 36,
             color: Colors.orange,
@@ -141,7 +141,7 @@ class GameOverPage extends StatelessWidget {
 
   List<Widget> _newRecord() => [
         Text(
-          '新纪录',
+          'New Record',
           style: TextStyle(
             fontSize: 36,
             color: Colors.white,
