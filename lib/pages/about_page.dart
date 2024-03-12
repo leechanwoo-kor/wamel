@@ -23,7 +23,7 @@ class AboutPage extends StatelessWidget {
               children: [
                 _topAction(),
                 lExpanded(),
-                lExpanded(flex: 10),
+                // lExpanded(flex: 10),
                 lText(
                   'A',
                   bold: true,
@@ -48,7 +48,7 @@ class AboutPage extends StatelessWidget {
                 Image.asset(
                   // 'assets/images/qr.jpg',
                   'assets/images/ai.jpg',
-                  width: 30.vw,
+                  width: 75.vw,
                 ),
                 lExpanded(flex: 10, child: _homeSite()),
                 _madeWithLove(),

@@ -125,7 +125,7 @@ class _GameSettingPageState extends State<GameSettingPage> {
             ),
             lExpanded(),
             lButton(
-              'Advanced Settings',
+              'Advanced',
               onTap: _more,
               height: 5.vw * 2.2,
               colorBg: Colors.black,

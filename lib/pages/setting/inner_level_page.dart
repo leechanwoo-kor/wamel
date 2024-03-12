@@ -98,7 +98,7 @@ class _InnerLevelPageState extends State<InnerLevelPage> {
             ),
             lExpanded(
                 child: lText(
-              'Change theme',
+              'Theme',
               bold: true,
               size: 18,
             )),

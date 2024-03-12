@@ -71,7 +71,7 @@ class _BackgroundPageState extends State<BackgroundPage> {
             ),
             lExpanded(
                 child: lText(
-              'Replacement of background',
+              'Background',
               bold: true,
               size: 18,
             )),
@@ -90,7 +90,7 @@ class _BackgroundPageState extends State<BackgroundPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             lButton(
-              'Replace the picture',
+              'Select',
               onTap: _pickImage,
               height: 5.vw * 2.2,
               colorBg: Colors.black,

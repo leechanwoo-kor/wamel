@@ -151,7 +151,7 @@ class _LevelSettingPageState extends State<LevelSettingPage> {
             ),
             lExpanded(
                 child: lText(
-              'Custom Pictures',
+              'Pictures',
               bold: true,
               size: 18,
             )),
@@ -170,7 +170,7 @@ class _LevelSettingPageState extends State<LevelSettingPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             lButton(
-              'Change picture',
+              'Select',
               onTap: _pickImage,
               height: 5.vw * 2.2,
               colorBg: Colors.black,
