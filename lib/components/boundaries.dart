@@ -1,6 +1,4 @@
-import 'package:flame/extensions.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
-import 'package:flutter/widgets.dart';
 import 'package:wamel/game/my_game.dart';
 
 List<Wall> createBoundaries(MyGame game) {

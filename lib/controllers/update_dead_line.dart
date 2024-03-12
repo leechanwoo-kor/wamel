@@ -2,7 +2,6 @@ import 'package:flame/components.dart';
 
 import '../components/ball.dart';
 import '../components/dead_line.dart';
-import '../game/game_life.dart';
 import '../game/game_state.dart';
 import '../game/my_game.dart';
 import '../tools/size_tool.dart';

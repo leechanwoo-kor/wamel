@@ -2,14 +2,12 @@ import 'package:flame/components.dart';
 
 import '../components/background.dart';
 import '../components/boundaries.dart';
-import '../components/dead_line.dart';
 import '../components/scores.dart';
 import '../components/setting_button.dart';
 import '../controllers/generate_ball.dart';
 import '../controllers/update_balls_bounce.dart';
 import '../controllers/update_balls_falling.dart';
 import '../controllers/update_dead_line.dart';
-import '../controllers/update_gravity.dart';
 import '../controllers/update_level_up.dart';
 import '../tools/audio_tool.dart';
 import '../tools/image/image_tool.dart';
