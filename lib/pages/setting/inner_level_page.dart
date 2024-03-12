@@ -10,6 +10,8 @@ import '../../tools/screen/screen_extension.dart';
 import '../../widgets/base_widget.dart';
 
 class InnerLevelPage extends StatefulWidget {
+  const InnerLevelPage({super.key});
+
   @override
   _InnerLevelPageState createState() => _InnerLevelPageState();
 }
@@ -130,7 +132,7 @@ class _LevelImageListState extends State<LevelImageList> {
   late PageController controller;
 
   Future<void> onTapImage(Level level) async {
-    if (widget.onTap != null) await widget.onTap();
+    await widget.onTap();
   }
 
   int currentPage = 0;
