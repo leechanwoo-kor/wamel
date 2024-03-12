@@ -13,7 +13,7 @@ class GameLife {
 
   static void start() async {
     await GameOnload.init();
-    await NavigatorTool.push(GamePage(
+    await NavigatorTool.push(const GamePage(
       hide: false,
     ));
   }
@@ -48,7 +48,7 @@ class GameLife {
 
   void restart() {
     pause();
-    NavigatorTool.replace(GamePage(
+    NavigatorTool.replace(const GamePage(
       hide: false,
     ));
   }
@@ -59,7 +59,7 @@ class GameLife {
 
   void setting() async {
     pause();
-    await NavigatorTool.push(GameSettingPage(
+    await NavigatorTool.push(const GameSettingPage(
       fromHome: false,
     ));
     resume();

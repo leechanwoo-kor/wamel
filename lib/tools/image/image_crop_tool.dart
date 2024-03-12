@@ -19,6 +19,6 @@ class ImageCropTool {
       await DialogTool.close();
       return path;
     }
-    return await NavigatorTool.push(ImageCropPage());
+    return await NavigatorTool.push(const ImageCropPage());
   }
 }

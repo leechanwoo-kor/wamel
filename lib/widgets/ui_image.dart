@@ -8,11 +8,10 @@ class UiImage extends StatelessWidget {
   final String path;
   final Function(Uint8List) builder;
 
-  UiImage(this.path, {required this.builder});
+  const UiImage(this.path, {super.key, required this.builder});
 
   @override
   Widget build(BuildContext context) {
-    // return RawImage(image: ImageTool.image(path));
     return FutureBuilder<Uint8List>(
       future: ImageTool.imageBytes(path),
       builder: (context, snapshot) {

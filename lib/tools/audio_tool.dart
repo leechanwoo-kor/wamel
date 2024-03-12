@@ -30,7 +30,7 @@ class AudioTool {
 
   static void mix() async {
     boomCount++;
-    Future.delayed(Duration(milliseconds: 100), () {
+    Future.delayed(const Duration(milliseconds: 100), () {
       if (boomCount == 1) {
         play('boom2.mp3');
       } else if (boomCount == 2) {

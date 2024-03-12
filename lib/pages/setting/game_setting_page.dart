@@ -13,7 +13,7 @@ import 'more_setting_page.dart';
 
 class GameSettingPage extends StatefulWidget {
   final bool fromHome;
-  GameSettingPage({required this.fromHome});
+  const GameSettingPage({super.key, required this.fromHome});
   @override
   _GameSettingPageState createState() => _GameSettingPageState();
 }
@@ -43,7 +43,7 @@ class _GameSettingPageState extends State<GameSettingPage> {
       return;
     }
     await Levels.init();
-    await NavigatorTool.push(MoreSettingPage());
+    await NavigatorTool.push(const MoreSettingPage());
   }
 
   GameSetting get setting => GameState.gameSetting;

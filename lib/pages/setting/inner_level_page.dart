@@ -61,9 +61,9 @@ class _InnerLevelPageState extends State<InnerLevelPage> {
 
   Widget _innerLevelsList() {
     return !loaded
-        ? CircularProgressIndicator()
+        ? const CircularProgressIndicator()
         : ListView.builder(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             itemCount: innerLevels.length,
             itemBuilder: (_, index) {
               return Container(
@@ -118,7 +118,8 @@ class LevelImageList extends StatefulWidget {
   final Function onTap;
   final double? width, height;
   final List<Level> items;
-  LevelImageList({
+  const LevelImageList({
+    super.key,
     required this.items,
     this.width,
     this.height,
@@ -158,7 +159,7 @@ class _LevelImageListState extends State<LevelImageList> {
       if (widget.items.length > 1) {
         await controller.animateToPage(
           2,
-          duration: Duration(milliseconds: 100),
+          duration: const Duration(milliseconds: 100),
           curve: Curves.easeOutQuint,
         );
       }
@@ -167,7 +168,7 @@ class _LevelImageListState extends State<LevelImageList> {
 
   @override
   void dispose() {
-    controller?.dispose();
+    controller.dispose();
     super.dispose();
   }
 
@@ -177,7 +178,7 @@ class _LevelImageListState extends State<LevelImageList> {
       onTap: () async {
         await onTapImage(level);
       },
-      child: Container(
+      child: SizedBox(
         width: _height,
         height: _height,
         child: Column(
@@ -187,7 +188,7 @@ class _LevelImageListState extends State<LevelImageList> {
             AnimatedContainer(
               width: _height,
               height: _height - top,
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               curve: Curves.easeOutQuint,
               child: RawImage(
                 image: ImageTool.image(level.image),
@@ -207,7 +208,7 @@ class _LevelImageListState extends State<LevelImageList> {
       height: _height,
       alignment: Alignment.center,
       child: PageView.builder(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         controller: controller,
         itemCount: widget.items.length,
         itemBuilder: (context, int currentIndex) {

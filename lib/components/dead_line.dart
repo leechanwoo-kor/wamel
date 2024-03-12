@@ -22,8 +22,7 @@ class DeadLine extends SpriteComponent {
         position: Vector2(0, gameRef.vw(marginTop)));
   }
 
-  DeadLine({Sprite? sprite, Vector2? size, Vector2? position})
-      : super(sprite: sprite, size: size, position: position);
+  DeadLine({super.sprite, super.size, super.position});
 
   @override
   void render(canvas) {

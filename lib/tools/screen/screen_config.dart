@@ -3,12 +3,12 @@ import 'package:flutter/widgets.dart';
 import 'screen_tool.dart';
 
 class ScreenConfig extends StatelessWidget {
-  ScreenConfig({
+  const ScreenConfig({
     required this.builder,
     this.designSize = ScreenTool.defaultSize,
     this.allowFontScaling = false,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Widget Function() builder;
 

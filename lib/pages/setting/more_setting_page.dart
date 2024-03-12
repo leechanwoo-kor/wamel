@@ -11,6 +11,8 @@ import 'inner_level_page.dart';
 import 'level_setting_page.dart';
 
 class MoreSettingPage extends StatelessWidget {
+  const MoreSettingPage({super.key});
+
   void _back() {
     NavigatorTool.pop();
   }
@@ -28,11 +30,11 @@ class MoreSettingPage extends StatelessWidget {
               children: [
                 _topAction(),
                 lExpanded(),
-                _button('Theme', InnerLevelPage()),
+                _button('Theme', const InnerLevelPage()),
                 lHeight(10.vw),
-                _button('Background', BackgroundPage()),
+                _button('Background', const BackgroundPage()),
                 lHeight(10.vw),
-                _button('Picture', LevelSettingPage()),
+                _button('Picture', const LevelSettingPage()),
                 lExpanded(),
               ],
             ),

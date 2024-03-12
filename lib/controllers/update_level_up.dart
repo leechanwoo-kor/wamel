@@ -17,7 +17,7 @@ class UpdateLevelUp extends Component with HasGameRef<MyGame> {
     // Ball 컴포넌트 제거
     gameRef.children
         .whereType<Ball>()
-        .where((ball) => ball.isRemoved)
+        .where((ball) => ball.removing)
         .toList()
         .forEach((ball) {
       ball.removeFromParent();

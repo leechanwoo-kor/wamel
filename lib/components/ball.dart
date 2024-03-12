@@ -14,7 +14,7 @@ class Ball extends BodyComponent<MyGame> with ContactCallbacks {
   final double radius;
   bool landed;
   bool levelUp = false;
-  bool isRemoved = false;
+  bool removing = false;
   bool moving;
   bool bouncing;
   late SpriteComponent spriteComponent;
@@ -104,10 +104,10 @@ class Ball extends BodyComponent<MyGame> with ContactCallbacks {
       other.landed = true;
       if (level == other.level) {
         if (position.y < other.position.y) {
-          isRemoved = true;
+          removing = true;
           other.levelUp = true;
         } else {
-          other.isRemoved = true;
+          other.removing = true;
           levelUp = true;
         }
       }

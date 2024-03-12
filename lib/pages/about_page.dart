@@ -8,6 +8,8 @@ import '../widgets/base_widget.dart';
 import '../widgets/pulse.dart';
 
 class AboutPage extends StatelessWidget {
+  const AboutPage({super.key});
+
   void _back() {
     NavigatorTool.pop();
   }
@@ -64,7 +66,7 @@ class AboutPage extends StatelessWidget {
   }
 
   Widget _homeSite() {
-    final url = 'https://github.com/leechanwoo-kor/wamel';
+    const url = 'https://github.com/leechanwoo-kor/wamel';
     return GestureDetector(
       onTap: () {
         UrlTool.open(url);

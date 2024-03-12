@@ -7,7 +7,7 @@ import '../tools/system_tool.dart';
 
 class GamePage extends StatefulWidget {
   final bool hide;
-  GamePage({required this.hide});
+  const GamePage({super.key, required this.hide});
   @override
   _GamePageState createState() => _GamePageState();
 }

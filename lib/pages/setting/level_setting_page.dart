@@ -10,6 +10,8 @@ import '../../tools/screen/screen_extension.dart';
 import '../../widgets/base_widget.dart';
 
 class LevelSettingPage extends StatefulWidget {
+  const LevelSettingPage({super.key});
+
   @override
   _LevelSettingPageState createState() => _LevelSettingPageState();
 }
@@ -35,7 +37,7 @@ class _LevelSettingPageState extends State<LevelSettingPage> {
   Future<void> next() async {
     if (isLast) return;
     await controller.nextPage(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeOutQuint,
     );
   }
@@ -43,7 +45,7 @@ class _LevelSettingPageState extends State<LevelSettingPage> {
   Future<void> pre() async {
     if (isFirst) return;
     await controller.previousPage(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeOutQuint,
     );
   }
@@ -66,7 +68,7 @@ class _LevelSettingPageState extends State<LevelSettingPage> {
 
   @override
   void dispose() {
-    controller?.dispose();
+    controller.dispose();
     super.dispose();
   }
 
@@ -101,32 +103,30 @@ class _LevelSettingPageState extends State<LevelSettingPage> {
 
   Widget _body() {
     return !loaded
-        ? CircularProgressIndicator()
-        : Container(
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                _Levels(),
-                Container(
-                  padding: EdgeInsets.all(5.vw),
-                  child: Row(
-                    children: [
-                      lIconButton(
-                        Icons.chevron_left,
-                        color: Colors.black,
-                        onTap: pre,
-                      ),
-                      lExpanded(),
-                      lIconButton(
-                        Icons.chevron_right,
-                        color: Colors.black,
-                        onTap: next,
-                      ),
-                    ],
-                  ),
+        ? const CircularProgressIndicator()
+        : Stack(
+            alignment: Alignment.center,
+            children: [
+              _Levels(),
+              Container(
+                padding: EdgeInsets.all(5.vw),
+                child: Row(
+                  children: [
+                    lIconButton(
+                      Icons.chevron_left,
+                      color: Colors.black,
+                      onTap: pre,
+                    ),
+                    lExpanded(),
+                    lIconButton(
+                      Icons.chevron_right,
+                      color: Colors.black,
+                      onTap: next,
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           );
   }
 
@@ -185,7 +185,8 @@ class LevelEditImageList extends StatefulWidget {
   final Function(Level level) onTap;
   final double width, height;
   final PageController controller;
-  LevelEditImageList({
+  const LevelEditImageList({
+    super.key,
     required this.width,
     required this.height,
     required this.onTap,
@@ -199,7 +200,7 @@ class _LevelEditImageListState extends State<LevelEditImageList> {
   late PageController controller;
 
   Future<void> onTapImage(Level level) async {
-    if (widget.onTap != null) await widget.onTap(level);
+    await widget.onTap(level);
   }
 
   int currentPage = 0;
@@ -214,22 +215,18 @@ class _LevelEditImageListState extends State<LevelEditImageList> {
     }
   }
 
-  double get _screenWidth => widget.width ?? 100.vw;
-  double get _height => widget.height ?? 20.vw;
+  double get _screenWidth => widget.width;
+  double get _height => widget.height;
 
   @override
   void dispose() {
-    if (widget.controller == null) {
-      controller?.dispose();
-    }
     super.dispose();
   }
 
   @override
   void initState() {
     super.initState();
-    controller = widget.controller ??
-        PageController(viewportFraction: _height / _screenWidth);
+    controller = widget.controller;
     controller.addListener(_pageListener);
   }
 
@@ -240,7 +237,7 @@ class _LevelEditImageListState extends State<LevelEditImageList> {
       onTap: () async {
         await onTapImage(level);
       },
-      child: Container(
+      child: SizedBox(
         width: _height,
         height: _height,
         child: Column(
@@ -250,7 +247,7 @@ class _LevelEditImageListState extends State<LevelEditImageList> {
             AnimatedContainer(
               width: size,
               height: size - top,
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               curve: Curves.easeOutQuint,
               child: RawImage(
                 image: ImageTool.image(level.image),
@@ -270,7 +267,7 @@ class _LevelEditImageListState extends State<LevelEditImageList> {
       height: _height,
       alignment: Alignment.center,
       child: PageView.builder(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         controller: controller,
         itemCount: levels.length,
         itemBuilder: (context, int currentIndex) {

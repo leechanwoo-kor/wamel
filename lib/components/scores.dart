@@ -28,12 +28,8 @@ class Scores extends TextComponent {
   }
 
   Scores({
-    String? text,
-    required TextPaint textRenderer,
-    required Vector2 position,
-  }) : super(
-          text: text,
-          textRenderer: textRenderer,
-          position: position,
-        );
+    super.text,
+    required TextPaint super.textRenderer,
+    required Vector2 super.position,
+  });
 }

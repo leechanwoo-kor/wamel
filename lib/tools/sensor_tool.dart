@@ -17,7 +17,7 @@ class SensorTool {
 
   static XYZ _xyz = XYZ(0, 0, 0);
 
-  static XYZ get xyz => _xyz ?? XYZ(0, 0, 0);
+  static XYZ get xyz => _xyz;
 
   static Future<void> start() async {
     await stop();

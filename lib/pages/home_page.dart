@@ -18,13 +18,13 @@ class HomePage extends StatelessWidget {
   }
 
   void _about() {
-    NavigatorTool.push(AboutPage());
+    NavigatorTool.push(const AboutPage());
   }
 
   Future<void> _setting() async {
     await GameState.initSetting();
     await NavigatorTool.push(
-      GameSettingPage(
+      const GameSettingPage(
         fromHome: true,
       ),
     );
@@ -52,8 +52,8 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _hideGame() => Offstage(
-        child: Container(
+  Widget _hideGame() => const Offstage(
+        child: SizedBox(
           width: 1,
           height: 1,
           child: GamePage(hide: true),

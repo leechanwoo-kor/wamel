@@ -20,6 +20,7 @@ class GameOverPage extends StatelessWidget {
 
   GameOverPage(
     this.gameRef, {
+    super.key,
     required this.isWin,
   });
 
@@ -38,7 +39,7 @@ class GameOverPage extends StatelessWidget {
   }
 
   void _setting() => NavigatorTool.push(
-        GameSettingPage(
+        const GameSettingPage(
           fromHome: false,
         ),
       );
@@ -121,7 +122,7 @@ class GameOverPage extends StatelessWidget {
   List<Widget> _normalRecord() => [
         Text(
           'High Score：${GameState.record}',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 24,
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -130,7 +131,7 @@ class GameOverPage extends StatelessWidget {
         lHeight(10.vw),
         Text(
           'Score：${GameState.score}',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 36,
             color: Colors.orange,
             fontWeight: FontWeight.bold,
@@ -140,7 +141,7 @@ class GameOverPage extends StatelessWidget {
       ];
 
   List<Widget> _newRecord() => [
-        Text(
+        const Text(
           'New Record',
           style: TextStyle(
             fontSize: 36,
@@ -151,7 +152,7 @@ class GameOverPage extends StatelessWidget {
         lHeight(5.vw),
         Text(
           '${GameState.score}',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 36,
             color: Colors.orange,
             fontWeight: FontWeight.bold,
@@ -162,7 +163,7 @@ class GameOverPage extends StatelessWidget {
 
   Widget _shine() {
     return Spinner(
-        child: Container(
+        child: SizedBox(
       width: 90.vw,
       height: 90.vw,
       child: RawImage(
@@ -173,7 +174,7 @@ class GameOverPage extends StatelessWidget {
   }
 
   Widget _topBall() {
-    return Container(
+    return SizedBox(
       width: Levels.radius(Levels.topLevel).vw * 2,
       height: Levels.radius(Levels.topLevel).vw * 2,
       child: RawImage(

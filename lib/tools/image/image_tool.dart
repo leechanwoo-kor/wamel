@@ -31,10 +31,10 @@ class ImageTool {
       await Levels.init();
     }
     final levelsImages = <String>[];
-    LevelsInner.levels.values.forEach((levels) {
+    for (var levels in LevelsInner.levels.values) {
       final images = levels.map((e) => e.image).toList();
       levelsImages.addAll(images);
-    });
+    }
     await imageCaches.loadAll(levelsImages);
   }
 

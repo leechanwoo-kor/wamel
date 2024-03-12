@@ -9,8 +9,7 @@ class SettingButton extends SpriteComponent
     with TapCallbacks, HasGameRef<MyGame> {
   static double margin = 5;
 
-  SettingButton({Sprite? sprite, Vector2? size, Vector2? position})
-      : super(sprite: sprite, size: size, position: position);
+  SettingButton({super.sprite, super.size, super.position});
 
   @override
   bool onTapDown(TapDownEvent event) {

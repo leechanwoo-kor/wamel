@@ -14,22 +14,21 @@ class DialogTool {
         context: context,
         builder: (BuildContext context) {
           return CupertinoAlertDialog(
-            title: Text('$title'),
-            content: Text('$content'),
+            title: Text(title),
+            content: Text(content),
             actions: <Widget>[
-              if (actionText != null)
-                CupertinoDialogAction(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    if (action != null) action();
-                  },
-                  child: Text('$actionText'),
-                ),
+              CupertinoDialogAction(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  action();
+                },
+                child: Text(actionText),
+              ),
               CupertinoDialogAction(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Cancel'),
+                child: const Text('Cancel'),
               ),
             ],
           );
@@ -44,10 +43,10 @@ class DialogTool {
         context: NavigatorTool.gContext!,
         builder: (BuildContext context) {
           return CupertinoAlertDialog(
-            title: Text('$title'),
+            title: Text(title),
             content: Container(
-              padding: EdgeInsets.all(10),
-              child: Text('잠시만 기다려 주십시오...'),
+              padding: const EdgeInsets.all(10),
+              child: const Text('잠시만 기다려 주십시오...'),
             ),
           );
         });

@@ -77,9 +77,7 @@ class _ImageLoader {
   Future<Image> future;
 
   Future<Image> retrieve() async {
-    if (loadedImage == null) {
-      loadedImage = await future;
-    }
+    loadedImage ??= await future;
     return loadedImage!;
   }
 }

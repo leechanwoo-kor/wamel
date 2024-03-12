@@ -9,6 +9,8 @@ import '../../tools/screen/screen_extension.dart';
 import '../../widgets/base_widget.dart';
 
 class BackgroundPage extends StatefulWidget {
+  const BackgroundPage({super.key});
+
   @override
   _BackgroundPageState createState() => _BackgroundPageState();
 }
@@ -49,7 +51,7 @@ class _BackgroundPageState extends State<BackgroundPage> {
   }
 
   Widget _background() {
-    return Container(
+    return SizedBox(
       width: 100.vw,
       height: 100.vh,
       child: RawImage(

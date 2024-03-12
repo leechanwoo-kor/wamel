@@ -26,7 +26,7 @@ Widget lText(
   bold ??= false;
   color ??= Colors.black;
   return Text(
-    '$text',
+    text,
     overflow: overflow,
     style: TextStyle(
       color: color,
@@ -37,12 +37,10 @@ Widget lText(
 }
 
 Widget lHeight(double height) {
-  height ??= 10;
   return SizedBox(height: height);
 }
 
 Widget lWidth(double width) {
-  width ??= 10;
   return SizedBox(width: width);
 }
 
@@ -68,16 +66,14 @@ Widget lTextField({
   onChanged ??= (_) {};
   onSubmitted ??= (_) {};
   keyboardType ??= TextInputType.number;
-  return Container(
-    child: TextField(
-      onChanged: onChanged,
-      onSubmitted: onSubmitted,
-      keyboardType: keyboardType,
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.all(padding),
-        hintText: hintText,
-        border: OutlineInputBorder(),
-      ),
+  return TextField(
+    onChanged: onChanged,
+    onSubmitted: onSubmitted,
+    keyboardType: keyboardType,
+    decoration: InputDecoration(
+      contentPadding: EdgeInsets.all(padding),
+      hintText: hintText,
+      border: const OutlineInputBorder(),
     ),
   );
 }
@@ -107,8 +103,7 @@ Widget lButton(
       decoration: BoxDecoration(
           color: colorBg,
           borderRadius: BorderRadiusDirectional.all(Radius.circular(radius))),
-      child: lText(text,
-          color: colorText ?? Colors.black, size: fontSize, bold: true),
+      child: lText(text, color: colorText, size: fontSize, bold: true),
     ),
   );
 }

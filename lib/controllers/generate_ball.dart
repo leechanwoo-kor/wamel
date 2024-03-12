@@ -32,7 +32,7 @@ class GenerateBall {
       canFall: false,
       landed: false,
     );
-    Future.delayed(Duration(milliseconds: 600), () {
+    Future.delayed(const Duration(milliseconds: 600), () {
       gameRef.add(ball);
     });
     GameState.lastBall = ball;

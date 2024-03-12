@@ -9,6 +9,8 @@ import '../../tools/screen/screen_extension.dart';
 import '../../widgets/base_widget.dart';
 
 class ImageCropPage extends StatefulWidget {
+  const ImageCropPage({super.key});
+
   @override
   _ImageCropPageState createState() => _ImageCropPageState();
 }
@@ -29,7 +31,7 @@ class _ImageCropPageState extends State<ImageCropPage> {
     final cropped = await cropController.crop(pixelRatio: pixelRatio);
     final path = await ImageTool.saveImage(cropped!);
     NavigatorTool.pop(path);
-    CircleAvatar();
+    const CircleAvatar();
   }
 
   void _pickImage() async {

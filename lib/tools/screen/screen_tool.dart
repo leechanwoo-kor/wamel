@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
@@ -7,7 +6,7 @@ class ScreenTool {
   factory ScreenTool() => _instance;
   ScreenTool._()
       : allowFontScaling = false,
-        uiSize = Size(0, 0);
+        uiSize = const Size(0, 0);
   static final ScreenTool _instance = ScreenTool._();
 
   static const Size defaultSize = Size(360, 640);
@@ -28,15 +27,13 @@ class ScreenTool {
     required Size designSize,
     required bool allowFontScaling,
   }) {
-    designSize ??= defaultSize;
-    allowFontScaling ??= false;
     uiSize = designSize;
     this.allowFontScaling = allowFontScaling;
 
     _screenWidth = constraints.maxWidth;
     _screenHeight = constraints.maxHeight;
 
-    var window = WidgetsBinding.instance?.window ?? ui.window;
+    var window = WidgetsBinding.instance.window;
 
     _pixelRatio = window.devicePixelRatio;
     _statusBarHeight = window.padding.top;
