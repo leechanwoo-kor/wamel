@@ -12,10 +12,10 @@ class BackgroundPage extends StatefulWidget {
   const BackgroundPage({super.key});
 
   @override
-  _BackgroundPageState createState() => _BackgroundPageState();
+  BackgroundPageState createState() => BackgroundPageState();
 }
 
-class _BackgroundPageState extends State<BackgroundPage> {
+class BackgroundPageState extends State<BackgroundPage> {
   void _back() {
     NavigatorTool.pop();
   }

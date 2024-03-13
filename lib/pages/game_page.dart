@@ -9,10 +9,10 @@ class GamePage extends StatefulWidget {
   final bool hide;
   const GamePage({super.key, required this.hide});
   @override
-  _GamePageState createState() => _GamePageState();
+  GamePageState createState() => GamePageState();
 }
 
-class _GamePageState extends State<GamePage> {
+class GamePageState extends State<GamePage> {
   @override
   void initState() {
     super.initState();

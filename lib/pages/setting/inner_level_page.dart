@@ -13,10 +13,10 @@ class InnerLevelPage extends StatefulWidget {
   const InnerLevelPage({super.key});
 
   @override
-  _InnerLevelPageState createState() => _InnerLevelPageState();
+  InnerLevelPageState createState() => InnerLevelPageState();
 }
 
-class _InnerLevelPageState extends State<InnerLevelPage> {
+class InnerLevelPageState extends State<InnerLevelPage> {
   void _back() {
     NavigatorTool.pop();
   }
@@ -126,10 +126,10 @@ class LevelImageList extends StatefulWidget {
     required this.onTap,
   });
   @override
-  _LevelImageListState createState() => _LevelImageListState();
+  LevelImageListState createState() => LevelImageListState();
 }
 
-class _LevelImageListState extends State<LevelImageList> {
+class LevelImageListState extends State<LevelImageList> {
   late PageController controller;
 
   Future<void> onTapImage(Level level) async {

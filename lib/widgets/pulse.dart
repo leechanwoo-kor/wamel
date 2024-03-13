@@ -4,14 +4,11 @@ class Pulse extends StatefulWidget {
   final Widget child;
   const Pulse({super.key, required this.child});
   @override
-  _PulseState createState() => _PulseState();
+  PulseState createState() => PulseState();
 }
 
-class _PulseState extends State<Pulse> with SingleTickerProviderStateMixin {
-  late AnimationController _controller = AnimationController(
-    duration: const Duration(milliseconds: 1200),
-    vsync: this,
-  )..repeat();
+class PulseState extends State<Pulse> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
 
   @override
   void initState() {

@@ -15,10 +15,10 @@ class GameSettingPage extends StatefulWidget {
   final bool fromHome;
   const GameSettingPage({super.key, required this.fromHome});
   @override
-  _GameSettingPageState createState() => _GameSettingPageState();
+  GameSettingPageState createState() => GameSettingPageState();
 }
 
-class _GameSettingPageState extends State<GameSettingPage> {
+class GameSettingPageState extends State<GameSettingPage> {
   void _back() {
     NavigatorTool.pop();
   }

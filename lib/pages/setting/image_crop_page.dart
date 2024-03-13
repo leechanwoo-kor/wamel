@@ -12,10 +12,10 @@ class ImageCropPage extends StatefulWidget {
   const ImageCropPage({super.key});
 
   @override
-  _ImageCropPageState createState() => _ImageCropPageState();
+  ImageCropPageState createState() => ImageCropPageState();
 }
 
-class _ImageCropPageState extends State<ImageCropPage> {
+class ImageCropPageState extends State<ImageCropPage> {
   void _back() {
     NavigatorTool.pop();
   }

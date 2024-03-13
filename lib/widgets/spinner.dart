@@ -6,14 +6,11 @@ class Spinner extends StatefulWidget {
   final Widget child;
   const Spinner({super.key, required this.child});
   @override
-  _SpinnerState createState() => _SpinnerState();
+  SpinnerState createState() => SpinnerState();
 }
 
-class _SpinnerState extends State<Spinner> with SingleTickerProviderStateMixin {
-  late AnimationController _controller = AnimationController(
-    duration: const Duration(seconds: 10),
-    vsync: this,
-  )..repeat();
+class SpinnerState extends State<Spinner> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
 
   @override
   void initState() {
