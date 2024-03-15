@@ -7,10 +7,10 @@ List<Wall> createBoundaries(MyGame game) {
   // final bottomLeft = visibleRect.bottomLeft.toVector2();
   // final topLeft = visibleRect.topLeft.toVector2();
   // final bottomRight = visibleRect.bottomRight.toVector2();
-  final topRight = Vector2(game.size.x - 5, game.size.y - 5);
-  final topLeft = Vector2(5, topRight.y);
-  final bottomLeft = Vector2(5, 5);
-  final bottomRight = Vector2(topRight.x, 5);
+  final bottomRight = Vector2(game.size.x - 5, game.size.y - 5);
+  final bottomLeft = Vector2(5, bottomRight.y);
+  final topLeft = Vector2(5, 5);
+  final topRight = Vector2(bottomRight.x, 5);
   // final topRight = game.size;
   // final bottomLeft = topRight * -1;
   // final topLeft = Vector2(bottomLeft.x, topRight.y);
