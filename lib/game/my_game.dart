@@ -1,5 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
+import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:flame_forge2d/forge2d_game.dart';
 import 'package:flutter/material.dart';
 
@@ -7,41 +8,63 @@ import '../controllers/generate_ball.dart';
 import '../tools/size_tool.dart';
 import 'game_onload.dart';
 
-class MyGame extends Forge2DGame with TapCallbacks, MultiTouchDragDetector {
+final screenSize = Vector2(720, 1080);
+const cameraZoom = 100.0;
+final worldSize = Vector2(screenSize.x / cameraZoom, screenSize.y / cameraZoom);
+
+class MyGame extends Forge2DGame {
   MyGame({
     required this.hide,
-  }) : super(gravity: Vector2(0, 100), zoom: 10);
+  }) : super(
+          world: MyWorld(),
+          gravity: Vector2(0, 20.0),
+        );
 
   bool hide;
+}
 
-  Vector2 get center => Vector2(size.x / 2, size.y / 2);
+// class MyWorld extends Forge2DWorld with TapCallbacks, MultiTouchDragDetector {
+class MyWorld extends Forge2DWorld with TapCallbacks, HasGameReference<MyGame> {
+  PositionComponent camera = PositionComponent();
 
   @override
   Future<void> onLoad() async {
+    game.camera.viewfinder.visibleGameSize = worldSize;
+    game.camera.viewfinder.anchor = Anchor.topCenter;
     super.onLoad();
+    game.camera.viewport.add(FpsTextComponent());
 
-    camera.viewport.add(FpsTextComponent());
-    await GameOnload(this).onLoad();
+    await GameOnload(game).onLoad();
   }
 
   @override
   void onTapDown(TapDownEvent event) {
-    if (hide) return;
-    // super.onTapDown(event);
-    if (event.localPosition.y > vw(30)) {
-      GenerateBall(this).generateBall(event.localPosition.x);
+    if (game.hide) return;
+    super.onTapDown(event);
+    print(
+        "game.camera.viewfinder.visibleGameSize:  ${game.camera.viewfinder.visibleGameSize}");
+    print("game.camera.viewport.size.x:  ${game.camera.viewport.size.x}");
+    print("game.camera.viewport.size.y:  ${game.camera.viewport.size.y}");
+    print("game.size.x:  ${game.size.x}");
+    print("game.size.y:  ${game.size.y}");
+    print("game.vw(30):  ${game.vw(30)}");
+    print("game.vh(30):  ${game.vh(30)}");
+    print("event.localPosition.x:  ${event.localPosition.x}");
+    print("event.localPosition.y:  ${event.localPosition.y}");
+    if (event.localPosition.y > game.vh(30) / 100) {
+      GenerateBall(game).generateBall(event.localPosition.x);
     }
   }
 
   @override
   void update(double dt) {
-    if (hide) return;
+    if (game.hide) return;
     super.update(dt);
   }
 
   @override
   void render(Canvas canvas) {
-    if (hide) return;
+    if (game.hide) return;
     super.render(canvas);
   }
 }

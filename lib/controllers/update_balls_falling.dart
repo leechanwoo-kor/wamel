@@ -22,8 +22,9 @@ class UpdateBallsFalling extends Component with HasGameRef<MyGame> {
     final p = ball.position;
     final fp = ball.fallPosition;
     final width = gameRef.vw(100);
-    final isLeft = fp.x < gameRef.center.x / 2;
-    final isCenter = (fp.x - gameRef.center.x).abs() < gameRef.vw(5);
+    final isLeft = fp.x < gameRef.camera.viewport.size.x / 2;
+    final isCenter =
+        (fp.x - gameRef.camera.viewport.size.x).abs() < gameRef.vw(5);
 
     adjustBallVelocity(ball, isLeft, isCenter);
 
