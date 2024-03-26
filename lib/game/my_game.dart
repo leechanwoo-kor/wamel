@@ -8,11 +8,13 @@ import '../controllers/generate_ball.dart';
 import '../tools/size_tool.dart';
 import 'game_onload.dart';
 
-final screenSize = Vector2(720, 1080);
+final screenSize = Vector2(720, 1280);
 const cameraZoom = 100.0;
 final worldSize = Vector2(screenSize.x / cameraZoom, screenSize.y / cameraZoom);
 
 class MyGame extends Forge2DGame {
+  bool hide;
+
   MyGame({
     required this.hide,
   }) : super(
@@ -20,7 +22,11 @@ class MyGame extends Forge2DGame {
           gravity: Vector2(0, 20.0),
         );
 
-  bool hide;
+  @override
+  void onGameResize(Vector2 size) {
+    super.onGameResize(size);
+    print(size);
+  }
 }
 
 // class MyWorld extends Forge2DWorld with TapCallbacks, MultiTouchDragDetector {
