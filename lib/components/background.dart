@@ -11,7 +11,7 @@ class Background extends SpriteComponent {
   }
 
   void resize(MyGame game) {
-    width = game.size.x;
-    height = game.size.y;
+    width = game.camera.viewport.size.x;
+    height = game.camera.viewport.size.y;
   }
 }

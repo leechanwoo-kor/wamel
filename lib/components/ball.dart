@@ -5,6 +5,7 @@ import 'package:wamel/game/game_state.dart';
 import 'package:wamel/game/level/levels.dart';
 import 'package:wamel/game/my_game.dart';
 import 'package:wamel/tools/audio_tool.dart';
+import 'package:wamel/tools/size_tool.dart';
 
 class Ball extends BodyComponent<MyGame> with ContactCallbacks {
   MyGame gameRef;
@@ -23,6 +24,13 @@ class Ball extends BodyComponent<MyGame> with ContactCallbacks {
 
   set size(Vector2 newSize) {
     spriteComponent.size = newSize;
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    if (!isFalling) return;
+    body.linearVelocity += Vector2(0, dt * 1000);
   }
 
   static Ball create({
@@ -59,7 +67,8 @@ class Ball extends BodyComponent<MyGame> with ContactCallbacks {
     Sprite? sprite,
   }) {
     spriteComponent =
-        SpriteComponent(sprite: sprite, size: Vector2.all(radius * 2));
+        // SpriteComponent(sprite: sprite, size: Vector2.all(radius * 2));
+        SpriteComponent(sprite: sprite, size: Vector2.all(radius));
   }
 
   @override
@@ -70,7 +79,7 @@ class Ball extends BodyComponent<MyGame> with ContactCallbacks {
     var position = fallPosition.clone();
     if (!isFalling) {
       position.x = gameRef.camera.viewport.size.x / 2;
-      position.x = gameRef.size.x / 2;
+      // position.x = gameRef.size.x / 2;
     }
 
     final bodyDef = BodyDef(

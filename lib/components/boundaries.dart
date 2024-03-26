@@ -7,7 +7,8 @@ List<Wall> createBoundaries(MyGame game) {
   // final bottomLeft = visibleRect.bottomLeft.toVector2();
   // final topLeft = visibleRect.topLeft.toVector2();
   // final bottomRight = visibleRect.bottomRight.toVector2();
-  final bottomRight = Vector2(game.size.x - 5, game.size.y - 5);
+  final bottomRight =
+      Vector2(game.camera.viewport.size.x - 5, game.camera.viewport.size.y - 5);
   final bottomLeft = Vector2(5, bottomRight.y);
   final topLeft = Vector2(5, 5);
   final topRight = Vector2(bottomRight.x, 5);

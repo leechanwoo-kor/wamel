@@ -1,7 +1,7 @@
+import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
-import 'package:flame_forge2d/forge2d_game.dart';
 import 'package:flutter/material.dart';
 
 import '../controllers/generate_ball.dart';
@@ -12,20 +12,45 @@ final screenSize = Vector2(720, 1280);
 const cameraZoom = 100.0;
 final worldSize = Vector2(screenSize.x / cameraZoom, screenSize.y / cameraZoom);
 
-class MyGame extends Forge2DGame {
+class MyGame extends Forge2DGame with HasGameRef<Forge2DGame> {
   bool hide;
 
   MyGame({
     required this.hide,
   }) : super(
           world: MyWorld(),
+          // zoom: cameraZoom,
           gravity: Vector2(0, 20.0),
         );
 
   @override
-  void onGameResize(Vector2 size) {
-    super.onGameResize(size);
-    print(size);
+  Future<void> onLoad() async {
+    await super.onLoad();
+    print(game.size);
+    camera.viewport = FixedResolutionViewport(resolution: screenSize);
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    camera.viewfinder.zoom += 0.1;
+  }
+
+  @override
+  void onMount() {
+    super.onMount();
+    debugMode = true;
+  }
+
+  // @override
+  // void onGameResize(Vector2 size) {
+  //   super.onGameResize(size);
+  // }
+
+  @override
+  Color backgroundColor() {
+    // Paints the background red
+    return Colors.red;
   }
 }
 
@@ -36,7 +61,7 @@ class MyWorld extends Forge2DWorld with TapCallbacks, HasGameReference<MyGame> {
   @override
   Future<void> onLoad() async {
     game.camera.viewfinder.visibleGameSize = worldSize;
-    game.camera.viewfinder.anchor = Anchor.topCenter;
+    game.camera.viewfinder.anchor = Anchor.topLeft;
     super.onLoad();
     game.camera.viewport.add(FpsTextComponent());
 
@@ -47,18 +72,9 @@ class MyWorld extends Forge2DWorld with TapCallbacks, HasGameReference<MyGame> {
   void onTapDown(TapDownEvent event) {
     if (game.hide) return;
     super.onTapDown(event);
-    print(
-        "game.camera.viewfinder.visibleGameSize:  ${game.camera.viewfinder.visibleGameSize}");
-    print("game.camera.viewport.size.x:  ${game.camera.viewport.size.x}");
-    print("game.camera.viewport.size.y:  ${game.camera.viewport.size.y}");
-    print("game.size.x:  ${game.size.x}");
-    print("game.size.y:  ${game.size.y}");
-    print("game.vw(30):  ${game.vw(30)}");
-    print("game.vh(30):  ${game.vh(30)}");
-    print("event.localPosition.x:  ${event.localPosition.x}");
-    print("event.localPosition.y:  ${event.localPosition.y}");
-    if (event.localPosition.y > game.vh(30) / 100) {
-      GenerateBall(game).generateBall(event.localPosition.x);
+    if (event.localPosition.y > game.vh(20) / game.camera.viewfinder.zoom) {
+      GenerateBall(game)
+          .generateBall(event.localPosition.x * game.camera.viewfinder.zoom);
     }
   }
 
