@@ -1,3 +1,5 @@
+import 'package:wamel/wamel/wamel_widget.dart';
+
 import '../pages/game_over_page.dart';
 import '../pages/game_page.dart';
 import '../pages/setting/game_setting_page.dart';
@@ -13,9 +15,10 @@ class GameLife {
 
   static void start() async {
     await GameOnload.init();
-    await NavigatorTool.push(const GamePage(
-      hide: false,
-    ));
+    // await NavigatorTool.push(const GamePage(
+    //   hide: false,
+    // ));
+    await NavigatorTool.push(const WamelWidget());
   }
 
   void pause() {
