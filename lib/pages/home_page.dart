@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wamel/wamel/wamel_widget.dart';
 
 import '../game/game_life.dart';
 import '../game/game_state.dart';
@@ -57,8 +56,7 @@ class HomePage extends StatelessWidget {
         child: SizedBox(
           width: 1,
           height: 1,
-          // child: GamePage(hide: true),
-          child: WamelWidget(),
+          child: GamePage(hide: true),
         ),
       );
 

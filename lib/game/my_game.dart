@@ -26,7 +26,6 @@ class MyGame extends Forge2DGame with HasGameRef<Forge2DGame> {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    print(game.size);
     camera.viewport = FixedResolutionViewport(resolution: screenSize);
   }
 
